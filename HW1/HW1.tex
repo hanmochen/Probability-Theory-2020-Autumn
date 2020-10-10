@@ -1,0 +1,244 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+
+% Margins
+\usepackage[top=2.5cm, left=3cm, right=3cm, bottom=4.0cm]{geometry}
+% Colour table cells
+\usepackage[table]{xcolor}
+
+% Get larger line spacing in table
+\newcommand{\tablespace}{\\[1.25mm]}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\tstrut{\rule{0pt}{2.0ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Exercise 1 \\ Probability Theory 2020 Autumn}
+\author{Hanmo Chen \\ Student ID 2020214276}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\pagebreak
+%%%%%%%%%%%%%%%%%
+%   Problem 1   %
+%%%%%%%%%%%%%%%%%
+\section{Problem 1}
+
+\textbf{Counterexample}: 
+
+let $X$ and $Y$ be two independent Bernoulli random variables with $p = \frac 1 2$. And let $Z = X \oplus Y$ ($X$ XOR $Y$), which means $Z = 1$ when $(X=1,Y=0)$ or $(X=0,Y=1)$. It is easy to check that $P(Z=0|X=0) = P(Z=0|X=1) = P(Z=0) = \frac 1 2$, so $X$ and $Z$ are independent(the same with $Y,Z$). But given $X$ and $Y$,  $Z$ is fixed, so $p(x,y,z)\neq p(x)p(y)p(z)$, X, Y, Z are not mutually independent!
+
+
+
+% Example of how to add figure (can be used for jpeg, png, pdf, eps etc)
+% In Figure~\ref{fig:universe}, we can see an example of a galaxy.
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[scale=2]{universe.jpg}
+%     \caption{Example figure}
+%     \label{fig:universe}
+% \end{figure}
+
+% \pagebreak
+\section{Problem 2}
+
+There are $2^8 = 256$ possible outcomes with equal probability.
+
+\begin{itemize}
+    \item $A_1 = \{01010101,10101010\},|A_1| = 2$
+    \item $A_2 = \{01100110,11001100,10011001,00110011\},|A_2| = 4$ 
+    \item $|A_3| = \binom{8}{4} = 70$
+    \item $A_4 = \{11111100,11111101,01111110,00111111,10111111,11111110,01111111,11111111\}$,$|A_4| = 8$  
+    \item $A_1\cap A_3 = A_1$,$A_2\cap A_3 = A_2$
+\end{itemize}
+
+Thus, 
+
+\begin{itemize}
+    \item $P(A_1) = \frac {|A_1|}{256} = \frac {1}{128}$
+    \item $P(A_2) = \frac {|A_2|}{256} = \frac {1}{64}$
+    \item $P(A_3) = \frac {|A_3|}{256} = \frac {35}{128}$
+    \item $P(A_4) = \frac {|A_4|}{256} = \frac {1}{32}$
+    \item $P(A_1|A_3) = \frac {|A_1\cap A_3|}{|A_3|} = \frac {1}{35}$
+    \item $P(A_2|A_3) = \frac {|A_2\cap A_3|}{|A_3|} = \frac {2}{35}$
+\end{itemize}
+
+\section{Problem 3}
+
+\subsection{(1)}
+
+Denote $B_5$ as the event that exactly 5 corners of the cube are colored red. It is easy to see that $|B_5| = \binom{8}{5} = 56$, and within $B_5$ those outcomes are with equal probability so we just need to find $|A \cap B_5|$.
+
+When exactly 5 corners of the cube are colored red, there is at most one face of the cube whose all four corners are colored red(we will say the face is red for brevity in the following). So in $A \cap B$ there is exactly one face is red and the event $A \cap B$ can be partitioned by which face is red.(Denote $A_i\cap B_5, i =1,2,3,4,5,6$ for each case and $(A_i\cap B_5) \cap (A_j\cup B_5) = \phi$ when $i\neq j$).
+
+Thus $|A \cap B_5| = \sum_{i=1}^6 |A_i\cap B_5| = 6\times \binom{4}{1} = 24$ 
+
+\begin{equation}
+    P(A|B_5) = \frac{|A\cap B_5|}{|B_5|} = \frac{24}{56} = \frac {3}{7}
+\end{equation}
+
+\subsection{(2)}
+
+Denote $B_j, j = 0,1,2,\cdots,8$ as the event that exactly $i$ corners of the cube are colored red, and $B$ as the event that at least 5 corners of the cube are colored red, $B = B_5\cup B_6\cup B_7 \cup B_8 $.
+
+\begin{itemize}
+    \item $P(A|B_5) = \frac 3 7 $
+    \item $P(A | B_6)$: $|B_6| = \binom{8}{2} = 28$ ,consider $A^C \cap B_6$, when there is no red face when 6 corners are red, so the other $2$ corners lie in the diagonal of the cube, so  $|A^C \cap B_6|=4$, $P(A|B_6) = \frac{|A\cap B_5|}{|B_5|} = \frac{28-4}{28} = \frac {6}{7}$
+    \item $P(A|B_7) = P(A|B_8) = 1$
+\end{itemize}
+
+Thus,
+
+\begin{equation}
+    \begin{aligned}
+        P(A|B) =& \frac {P(A\cap B)} {P(B)} = \frac{\sum_{j=5}^8{P(A|B_j)}P(B_j)}{\sum_{j=5}^8 P(B_j)} \\ 
+        & = \frac{24p^5(1-p)^3+24p^6(1-p)^2+8p^7(1-p)+p^8}{56p^5(1-p)^3+28p^6(1-p)^2+8p^7(1-p)+p^8} \\
+        & = \frac{24(1-p)^3+24p(1-p)^2+8p^2(1-p)+p^3}{56(1-p)^3+28p(1-p)^2+8p^2(1-p)+p^3}
+    \end{aligned}
+\end{equation}
+
+\subsection{(3)}
+
+Because $\Omega = \cup_{j=0}^8 B_j,A\cap B_j = \phi, j\leqslant 3$ and $|A \cap B_4| = 6$
+
+\begin{equation}
+    P(A) = \sum_{j=0}^8 P(A\cap B_j)= 6p^4(1-p)^4+ 24p^5(1-p)^3+24p^6(1-p)^2+8p^7(1-p)+p^8
+\end{equation}
+
+\section{Problem 4}
+
+\subsection{(1)}
+
+$\Omega = \{HH,HT,TH,TT\}$, denote $A_1 = \{HH,HT\},A_2 = \{HH,TH\}$.
+Because $\{HH\}=A_1 \cap A_2,\{HT\} = A_1\backslash A_2,\{TH\} = A_2\backslash A_1,\{TT\} = (A_1\cup A_2)^C$, $\sigma(\mathcal{C}) = 2^{\Omega}$ and $|\sigma(\mathcal{C})| = 2^4 = 16$
+
+\subsection{(2)}
+
+$\Omega = \{HHH,HHT,HTH,HTT,THH,THT,TTH,TTT\}$, denote $B_1 = \{HHH,HHT,TTH\} , B_2=\{ HHH, TTH, THT \} , B_3 = \{ HHH, HHT, THT \}$.
+
+Let $D_1 = \{HHH\},D_2 = \{HHT\},D_3 = \{TTH\},D_4 = \{THT\}$, $D_5 = \{HTH,HTT,THH,TTT\}$ be a partition of $\Omega$, and $B_1 = D_1 \cup D_2 \cup D_3,B_2 = D_1\cup D_3 \cup D_4, B_3 = D_1 \cup D_2\cup D_4$.
+
+So $\sigma(\mathcal{C}) = \sigma(\{D_1,D_2,D_3,D_4,D_5\}) = 2^5 = 32$
+
+\section{Problem 5}
+
+\begin{equation}
+    \mathbb{P}\left(\bigcap_{i=1}^{\infty} \bigcup_{n=i}^{\infty} A_{n}\right) = 1
+\end{equation}
+
+By the Borel-Cantelli Lemma, we just need to prove that $\sum_{n=1}^{\infty} \mathbb{P}(A_n)= \infty$. Denote $x_n = \mathbb{P}(A_n)$. 
+
+Because $\mathbb{P}\left(\cup_{n=1}^{\infty} A_{n}\right) = 1$, 
+
+\begin{equation}
+    \mathbb{P}\left(\bigcap_{n=1}^{\infty} A_{n}^c\right) = \prod_{i=1}^n (1-x_i) = 0
+\end{equation}
+
+That is, $\sum_{n=1}^{\infty} -\ln(1-x_n) = \infty$. 
+
+If $\sum_{n=1}^{\infty} x_n < \infty$, we have $\lim_{n\to \infty} x_n = 0$ and $\lim_{n \to \infty} \frac {-\ln(1-x_n)}{x_n} = 1$, which leads to a contradiction $\sum_{n=1}^{\infty} -\ln(1-x_n) < \infty$. 
+
+Therefore, we have $\sum_{n=1}^{\infty} x_n = \sum_{n=1}^{\infty} \mathbb{P}(A_n) = \infty$. 
+
+Using the Borel-Cantelli Lemma, we have $\mathbb{P}\left(\bigcap_{i=1}^{\infty} \bigcup_{n=i}^{\infty} A_{n}\right)=1$.
+
+\section{Problem 6}
+
+\subsection{(1)}
+
+We just need to prove that $\forall c \in \mathbb{R}$, $\{\omega: X_1(\omega) +X_2(\omega) \leqslant c\}$ is $\mathcal{F}$-measurable. 
+
+Equivalently, we prove that $\forall c \in \mathbb{R}$, $\{\omega: X_1(\omega) +X_2(\omega) > c\}$ is $\mathcal{F}$-measurable.
+
+Notice that 
+
+\begin{equation}
+    X_1+X_2 > c \Longleftrightarrow X_1 > c - X_2 \Longleftrightarrow \exists q \in \mathbb{Q},\text{ s.t. } X_1 > q > c - X_2
+\end{equation}
+
+So 
+
+\begin{equation}
+    \{\omega: X_1(\omega) +X_2(\omega) > c\} = \bigcup_{q \in \mathbb{Q}}\left(\{\omega: X_1(\omega)  > q\} \bigcap \{\omega: X_2(\omega)  > c-q\}\right)  
+\end{equation}
+
+Because $ \{\omega: X_1(\omega) > c\}, \{\omega: X_2(\omega) > c\}$ are  $\mathcal{F}$-measurable, after countable intersections and unions, $\{\omega: X_1(\omega) +X_2(\omega) > c\}$ is also $\mathcal{F}$-measurable, so $X_1+X_2$ is a random variable.
+
+
+\subsection{(2)}
+
+Notice that when $X_1$ and $X_2$ are random variables, $\max\{X_1,X_2\}$ is also a random variable because  $\{\omega: \max\{X_1,X_2\} \leqslant c\} = \{\omega: X_1(\omega) \leqslant c\} \cap \{\omega: X_1(\omega) \leqslant c\} $. Also, for a infinite sequence of random variables $\{X_n\}_{n=1}^{\infty}$, $Y_n = \underset{m \geqslant n}{\sup} x_{m}$ is a random variable because
+
+\begin{equation}
+    \{\omega: \sup_{m\geqslant n} x_{m} \leqslant c\} = \bigcap_{m\geqslant n }\{\omega: X_m(\omega) \leqslant c\} 
+\end{equation}
+
+In the same way, $\underset{n\to\infty}{\limsup} X_n = \inf {Y_n}$ is also a random variable.
+
+Because $\{X_n\}_{n=1}^{\infty}$ converges pointwise to $X$, $X = \underset{n\to\infty}{\limsup} X_n$ is a random variable.
+
+% Example of Simplex tableau:
+% \begin{align}
+%     \begin{array}{c | cccccc | c}
+%          BV  & z & x_1 & x_2 & x_3 & x_4 & x_5 & RHS \\ 
+%          \hline % horizontal line
+%          z   & 1 & 0 & 0 & -\tfrac{2}{5} & -\tfrac{1}{5} & 0 & -8 \\
+%          x_2 & 0 & 0 & 1 & -\tfrac{1}{5} & \tfrac{2}{5}  & 0 & 5 \\
+%          x_5 & 0 & 0 & 0 & -\tfrac{3}{5} & \tfrac{1}{5}  & 1 & 1 \\
+%          x_1 & 0 & 1 & 0 & \tfrac{3}{5}  & -\tfrac{1}{5} & 0 & 3
+%     \end{array}
+% \end{align}
+
+
+% We can define the \LaTeX{} commands \texttt{Tstrut} and \texttt{Bstrut} to get more spacing between rows in the tableau and make it look nicer:
+% \begin{align}
+%     \begin{array}{c | cccccc | c}
+%          BV  & z & x_1 & x_2 & x_3 & x_4 & x_5 & RHS \Tstrut\Bstrut \\ 
+%          \hline
+%          z   & 1 & 0 & 0 & -\tfrac{2}{5} & -\tfrac{1}{5} & 0 & -8 \Tstrut\Bstrut \\
+%          x_2 & 0 & 0 & 1 & -\tfrac{1}{5} & \tfrac{2}{5}  & 0 & 5  \Tstrut\Bstrut \\
+%          x_5 & 0 & 0 & 0 & -\tfrac{3}{5} & \tfrac{1}{5}  & 1 & 1  \Tstrut\Bstrut \\
+%          x_1 & 0 & 1 & 0 & \tfrac{3}{5}  & -\tfrac{1}{5} & 0 & 3  \Tstrut\Bstrut
+%     \end{array}
+% \end{align}
+
+% We can colour text and highlight cells in tableau, or just leave them empty:
+% \begin{align}
+%     \begin{array}{c | cccccc | c}
+%          BV  & z & x_1 & x_2 & x_3 & x_4 & x_5 & RHS \Tstrut\Bstrut \\ 
+%          \hline
+%          z   & 1 & & & -\tfrac{2}{5} & -\tfrac{1}{5} & & -8 \Tstrut\Bstrut \\
+%          x_2 & & & \cellcolor{gray!50}1 & -\tfrac{1}{5} & \tfrac{2}{5} & & 5 \Tstrut\Bstrut \\
+%          x_5 & & & & -\tfrac{3}{5} & \tfrac{1}{5}  & 1 & 1 \Tstrut\Bstrut \\
+%          x_1 & & \textcolor{red}{1} & & \tfrac{3}{5}  & -\tfrac{1}{5} & & 3 \Tstrut\Bstrut
+%     \end{array}
+% \end{align}
+
+% Here is how you make vectors and matrices:
+% \begin{align}
+%     \mathbf x = \begin{bmatrix} 1 & 2 & 3 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}^\top \\
+%     \mathbf A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}^{-1}
+% \end{align}
+
+% Here is a formulation of a linear program:
+% \begin{align*}
+%     \min_{x} \quad & c^\top x \\
+%     \mathrm{s.t.} \quad 
+%     & A x \leq b \\
+%     &-1 \leq x_n \leq 1 \,, \quad n = 1, \dots, N
+% \end{align*}
+
+% There is an ocean of Latex questions and answers online. If you have a question, most likely someone else will have asked the same question before. 
+
+\end{document}
