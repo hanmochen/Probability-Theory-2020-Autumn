@@ -1,0 +1,176 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+
+% Margins
+\usepackage[top=2.5cm, left=3cm, right=3cm, bottom=4.0cm]{geometry}
+% Colour table cells
+\usepackage[table]{xcolor}
+
+% Get larger line spacing in table
+\newcommand{\tablespace}{\\[1.25mm]}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\tstrut{\rule{0pt}{2.0ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Exercise 2 \\ Probability Theory 2020 Autumn}
+\author{Hanmo Chen \\ Student ID 2020214276}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+%%%%%%%%%%%%%%%%%
+%   Problem 1   %
+%%%%%%%%%%%%%%%%%
+\section{Problem 1}
+
+Define the number of each dice as $X_1,X_2,X_3$ and event $A$ as $X_1>X_2>X_3$ and $B$ as $X_1,X_2,X_3$. Obviously there are $6^3 = 216$ possible combinations of $(X_1,X_2,X_3)$ with equal probability. So we just need to find the size of $A = \{(X_1,X_2,X_3)|X_1>X_2>X_3,X_1,X_2,X_3 \in \{1,2,\cdots 6\}\}$
+
+Fix $X_1 = i$, $X_2 = j <i$, there are $j-1$ possible choices of $X_3$. So the size of $A$ is 
+
+\begin{equation}
+    \sum_{i=1}^6 \left(\sum_{j=1}^{i-1} (j-1)\right) = \sum_{i=1}^6 \left(\frac{(i-1)(i-2)}{2}\right) = 20
+\end{equation}
+
+Symmetrically, $|A| = |B| = 20$. So $P(X_1 >X_2>X_3)   = P(X_1 < X_2<X_3) = \frac{20}{216} = \frac{5}{54}$
+
+
+\section{Problem 2}
+
+\subsection{(i)}
+
+% \paragraph*{Log Sum Inequality:} Let $ a_{1},\cdots ,a_{n}$ and $ b_{1},\cdots ,b_{n}$ be nonnegative numbers. The log sum inequality states that
+
+% \begin{equation}
+%     \sum_{i=1}^{n} a_{i} \log \frac{a_{i}}{b_{i}} \geqslant \sum_{i=1}^n a_i \log \frac{\sum_{i=1}^n a_i}{\sum_{i=1}^n b_i}
+% \end{equation}
+
+Using the Lagrange Multiplier method, 
+
+\begin{equation}
+    L = H(X) + \lambda_1(\sum_{k=1}^n p_k - 1) + \lambda_2 (\sum_{k=1}^n p_kx_k - \mu)
+\end{equation}
+
+To maximize $L$,
+
+\begin{equation}
+    \left\{
+    \begin{aligned}
+         &\frac{\partial L}{ \partial p_k} = 0\quad (k=1,2,\cdots,n)\\
+        &\frac{\partial L}{ \partial \lambda_1} = 0 \\
+        &\frac{\partial L}{ \partial \lambda_2}  = 0 
+    \end{aligned}
+    \right.
+\end{equation}
+
+And 
+
+\begin{equation}
+    \frac{\partial L}{ \partial p_k} = -1-\log(p_k) + \lambda_1 +\lambda_2 x_k = 0 \Longleftrightarrow p_k = e^{\lambda_2 x_k +\lambda_1-1} = Cr^{x_k}
+\end{equation}
+
+where $C = e^{\lambda_1 -1},r = e^{\lambda_2}$，which are constants determined by $\sum_{k=1}^n p_k =1$ and $\sum_{k=1}^n x_kp_k =\mu$.
+
+\subsection{(ii)}
+
+For a countable support set, let $n\to \infty$,
+
+\begin{equation}
+    L = H(X) + \lambda_1(\sum_{k=1}^{\infty} p_k - 1) + \lambda_2 (\sum_{k=1}^{\infty} p_kx_k - \mu)
+\end{equation}
+
+To maximize $L$,
+
+\begin{equation}
+    \left\{
+    \begin{aligned}
+         &\frac{\partial L}{ \partial p_k} = 0\quad (k=1,2,\cdots,\infty)\\
+        &\frac{\partial L}{ \partial \lambda_1} = 0 \\
+        &\frac{\partial L}{ \partial \lambda_2}  = 0 
+    \end{aligned}
+    \right.
+\end{equation}
+
+And 
+
+\begin{equation}
+    \frac{\partial L}{ \partial p_k} = -1-\log(p_k) + \lambda_1 +\lambda_2 x_k = 0 \Longleftrightarrow p_k = e^{\lambda_2 x_k +\lambda_1-1} = Cr^{x_k}
+\end{equation}
+
+where $C = e^{\lambda_1 -1},r = e^{\lambda_2}$，which are constants determined by $\sum_{k=1}^{\infty} p_k =1$ and $\sum_{k=1}^{\infty} x_kp_k =\mu$.
+
+For the case of $x_k = k$,
+
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            &\sum_{i=1}^{\infty} p_k = \sum_{i=1}^{\infty} Cr^k = \frac {Cr}{1-r} = 1 \\
+            &\sum_{k=1}^{\infty} x_kp_k = \sum_{i=1}^{\infty} C kr^k= \frac {Cr}{(1-r)^2} = \mu 
+        \end{aligned}
+    \right.
+\end{equation}
+
+So $C =\mu-1, r = \frac{\mu-1}{\mu}$ and $P(X=k) = Cr^k$ is a geometric distribution.
+
+\section{Problem 3 (Conditionally convergent series)}
+
+\subsection{(i)}
+
+According to Leibniz's test, $S_n = \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n}
+$ converges, thus
+
+\begin{equation}
+    \lim_{n\to\infty} S_n = \lim_{n\to \infty} S_{2n} = \lim_{n\to \infty} \sum_{k= 1}^n \frac {1}{n+k} = \lim_{n\to \infty} \frac{1}{n}\sum_{k= 1}^n \frac {1}{1+k/n} = \int_{0}^1 \frac {1}{1+x}dx = \ln 2
+\end{equation}
+
+\subsection{(ii)}
+
+Notice that $1-\frac{1}{2}-\frac{1}{4} = \frac{1}{2} (1-\frac{1}{2})$, $\frac{1}{3}-\frac{1}{6}-\frac{1}{8} = \frac{1}{2} (\frac{1}{3}-\frac{1}{4})$ and so on. Thus,
+
+\begin{equation}
+    1-\frac{1}{2}-\frac{1}{4}+\frac{1}{3}-\frac{1}{6}-\frac{1}{8}+\frac{1}{5}-\frac{1}{10}-\frac{1}{12}+\cdots = \frac {1}{2} \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = \frac {\ln 2} {2}
+\end{equation}
+
+\subsection{(iii)}
+ 
+ $\frac 1 n > \ln (1+\frac 1 n) = \ln(n+1) - \ln(n)$, so $\sum_{k=1}^n \frac 1 k  > \ln(n+1)$, and the infinite sum converges. So the series $\frac{(-1)^{(n+1)}}{n}$ is conditionally convergent but not absolutely convergent.
+
+\section{Problem 4}
+
+\subsection{(i)}
+
+For $X\sim\text{Geometric}(p)$,we have $E(X) = \frac {1} {p}$ and $E(X^2) = \frac {2-p}{p^2}$. 
+
+Because $P(X-1=k |X>1) = P(X=k)$, 
+
+\begin{equation}
+    \begin{aligned}
+        E[X^3|X>1] & = E[(X-1)^3+3(X-1)^2+3(X-1)+1 | X>1] \\
+        & = E[X^3] + 3 E[X^2] + 3E[X] + 1 \\
+        & = E[X^3] + \frac {6-3p}{p^2} + \frac {3} {p} +1
+    \end{aligned}
+\end{equation}
+
+Also, $E[X^3] = E[X^3|X>1](1-p) + p$.
+
+\begin{equation}
+    E[X^3] = \frac{(\frac{6}{p^2}+1)(1-p)+p}{p} = \frac {6-6p+p^2} {p^3}
+\end{equation}
+
+For $E[X^4]$
+
+\begin{equation}
+    \begin{aligned}
+        E
+    \end{aligned}
+\end{equation}
+\end{document}

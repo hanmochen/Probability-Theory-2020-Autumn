@@ -1,0 +1,11 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Problem 1}{2}% 
+\contentsline {section}{\numberline {2}Problem 2}{2}% 
+\contentsline {subsection}{\numberline {2.1}(i)}{2}% 
+\contentsline {subsection}{\numberline {2.2}(ii)}{2}% 
+\contentsline {section}{\numberline {3}Problem 3 (Conditionally convergent series)}{3}% 
+\contentsline {subsection}{\numberline {3.1}(i)}{3}% 
+\contentsline {subsection}{\numberline {3.2}(ii)}{3}% 
+\contentsline {subsection}{\numberline {3.3}(iii)}{3}% 
+\contentsline {section}{\numberline {4}Problem 4}{4}% 
+\contentsline {subsection}{\numberline {4.1}(i)}{4}% 
