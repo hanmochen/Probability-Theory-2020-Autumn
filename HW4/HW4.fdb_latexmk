@@ -1,9 +1,9 @@
 # Fdb version 3
-["xdvipdfmx"] 1604903830 "HW4.xdv" "HW4.pdf" "HW4" 1604903831
-  "HW4.xdv" 1604903830 58788 211bcf9be62d70bb1476b0715094fe50 "xelatex"
+["xdvipdfmx"] 1604933151 "HW4.xdv" "HW4.pdf" "HW4" 1604933152
+  "HW4.xdv" 1604933151 73728 522bc37527a4222bfc16db8561bbeba1 "xelatex"
   (generated)
   "HW4.pdf"
-["xelatex"] 1604903829 "HW4.tex" "HW4.xdv" "HW4" 1604903831
+["xelatex"] 1604933150 "HW4.tex" "HW4.xdv" "HW4" 1604933152
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1480098689 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
@@ -79,13 +79,13 @@
   "/usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf" 1544742277 35176 ce7fee66be1fb01dfc6b702a7dbfa0ea ""
   "/usr/local/texlive/2018/texmf-var/web2c/xetex/xelatex.fmt" 1553378829 3737826 3c9ee2198fc3e18a713a1b12e057fce6 ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "HW4.aux" 1604903830 2068 c21f2671f4789cc9a7614152aa453eee ""
-  "HW4.out" 1604903830 682 0543719c0bde26fe3310e71ec92bdfec ""
-  "HW4.tex" 1604903828 9765 f4fc36b9305c96c81b316915f3c5002e ""
-  "HW4.toc" 1604903830 921 f9d131b3105ef48dbfe5b6a2db88064b ""
+  "HW4.aux" 1604933151 2280 3e2f16a342619ba4fcd4b43f83397d35 ""
+  "HW4.out" 1604933151 778 9f19a08bec677706eb9d0b6382ea8d51 ""
+  "HW4.tex" 1604933150 14400 717af4d8c46c12cd68334ede1e5b104e ""
+  "HW4.toc" 1604933151 1053 514639c7bda3a73393ae989b37b78e5c ""
   (generated)
-  "HW4.xdv"
   "HW4.log"
+  "HW4.xdv"
+  "HW4.toc"
   "HW4.aux"
   "HW4.out"
-  "HW4.toc"

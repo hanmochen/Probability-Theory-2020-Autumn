@@ -213,10 +213,10 @@ In the same way, let $h_2(t) = -\frac{t}{1+t^2} \phi(t)$,
     \end{aligned}
 \end{equation}
 
-So $\frac{x}{x^+1}<R(x) < \frac{1}{x}$. Thus $\lim_{x\to \infty} xR(x) = 1$.
+So $\frac{x}{x^2+1}<R(x) < \frac{1}{x}$. Thus $\lim_{x\to \infty} xR(x) = 1$.
 
 \begin{equation}
-    \lim_{x\to\infty} xe^{x^2/(2\sigma^2)} P(X\geqslant x) = \lim_{z\to\infty} \sigma z e^{z^2/2} P(Z\geqslant z) = \sqrt{2\pi} \sigma \lim_{x\to \infty} xR(x) = \sqrt{2\pi} \sigma
+    \lim_{x\to\infty} xe^{x^2/(2\sigma^2)} P(X\geqslant x) = \lim_{z\to\infty} \sigma z e^{z^2/2} P(Z\geqslant z) = \frac{ \sigma}{\sqrt{2\pi}} \lim_{x\to \infty} xR(x) =  \frac{ \sigma}{\sqrt{2\pi}}
 \end{equation}
 
 \section{Problem 4}
@@ -264,6 +264,141 @@ So $Y\sim Exponential(\sum_{i=2}^n\lambda_i)$ and $Y,X_1$ are independent.
 \end{equation}
 
 So $P(\min(X_1,X_2,\cdots,X_n)= X_1) = \frac{\lambda_1}{ \sum_{i=1}^n\lambda_i}$.
+
+\section{Problem 5}
+
+
+Denote $\Phi(x)$ and $\phi(x)$ as the pdf and cdf of standard Gaussian variable. So 
+
+\begin{equation}
+    P(X\geq \beta \sqrt{\log(n)}) = 1- [\Phi(\beta \sqrt{\log(n)})]^n
+\end{equation}
+
+According to Problem 3, 
+
+\begin{equation}
+    1- \frac{1}{x}\phi(x)<\Phi(x) < 1- \frac{x}{x^2+1} \phi(x)
+\end{equation}
+
+So 
+
+
+\begin{equation}
+    \left(1-\frac{1}{\sqrt{2\pi \log(n)} \beta n^{\beta^2/2}}\right)^n < [\Phi(\beta \sqrt{\log(n)})]^n < \left(1-\frac{\beta \sqrt{\log (n)}}{\sqrt{2\pi} (\beta^2\log(n)+1) n^{\beta^2/2}}\right)^n
+\end{equation}
+
+Denote $L_n(\beta) = \left(1-\frac{1}{\sqrt{2\pi \log(n)} \beta n^{\beta^2/2}}\right)^n,U_n(\beta) = \left(1-\frac{\beta \sqrt{\log (n)}}{\sqrt{2\pi} (\beta^2\log(n)+1) n^{\beta^2/2}}\right)^n$.
+
+If $\beta >\sqrt{2}$, $\beta^2/2 >1$,  $\lim\limits_{n\to\infty} L_n(\beta) = \lim\limits_{n\to\infty} Un(\beta) = 1$.  So $\lim\limits_{n\to\infty} P(X\geq \beta \sqrt{\log(n)}) = 0$
+
+If $\beta <\sqrt{2}$, $\beta^2/2 <1$,  $\lim\limits_{n\to\infty} L_n(\beta) = \lim\limits_{n\to\infty} Un(\beta) = 0$.  So $\lim\limits_{n\to\infty} P(X\geq \beta \sqrt{\log(n)}) = 1$
+
+So $\beta_0 = \sqrt{2}$. And when $\beta = \sqrt{2}$, using Bernoulli's inequality $(1+x)^n \geqslant 1+nx$ for $x\geqslant -1$,
+
+$\lim\limits_{n\to\infty} L_n(\sqrt{2}) = \lim\limits_{n\to\infty} \left(1-\frac{1}{2\sqrt{\pi \log(n)} n}\right)^n \geqslant \lim\limits_{n\to\infty} 1-\frac{1}{2\sqrt{\pi \log(n)}} = 1$
+
+Also we have $L_n(\sqrt{2}) \leqslant 1$ so  $\lim\limits_{n\to\infty} L_n(\sqrt{2}) = 1$
+
+And $U_n(\beta) \leqslant 1$, so for $\beta= \sqrt{2},\lim\limits_{n\to\infty} P(X\geq \beta \sqrt{\log(n)}) = 1$
+
+\section{Problem 6}
+
+Denote $V_n$ as $Var(X_n)$, we have 
+
+\begin{equation}
+    X_n = \sum_{i=1}^{X_{n-1}} W_i
+\end{equation}
+
+with $\mathbb{E}[W_i] = \mu,\operatorname{Var}(W_i) = \sigma^2$.
+
+First we need to use the Law of Total Variance 
+
+\begin{equation}
+    \operatorname{Var}(X)=\mathbb{E}[\operatorname{Var}(X \mid Y)]+\operatorname{Var}(\mathbb{E}[X \mid Y])
+\end{equation}
+
+The proof is given as below.
+
+Because $\operatorname{Var} (X|Y) = \mathbb{E}[(X-\mathbb{E}[X|Y])^2 |Y] = \mathbb{E}[X^2|Y] - (\mathbb{E}[X|Y])^2$,
+
+\begin{equation}
+  \begin{aligned}
+    \mathbb{E}[\operatorname{Var} (X|Y)]& = \mathbb{E}[ \mathbb{E}[X^2|Y] - (\mathbb{E}[X|Y])^2] \\& = \mathbb{E}[X^2] - \mathbb{E}[(\mathbb{E}[X|Y])^2]
+  \end{aligned}
+\end{equation}
+
+Meanwhile,
+
+\begin{equation}
+  \begin{aligned}
+    \operatorname{Var}(\mathbb{E}[X|Y]) & = \mathbb{E} [ (\mathbb{E}[X|Y])^2 ]- (\mathbb{E}[\mathbb{E}[X|Y]])^2 \\
+    & = \mathbb{E} [ (\mathbb{E}[X|Y])^2 ]- (\mathbb{E}[X])^2 
+  \end{aligned}
+\end{equation}
+
+Therefore,
+
+\begin{equation}
+\begin{aligned}
+  \mathbb{E}[\operatorname{Var} (X|Y)] + \operatorname{Var}(\mathbb{E}[X|Y])  = &\mathbb{E}[x^2] - (\mathbb{E}[x])^2 \\ =&\operatorname{Var}(X)
+\end{aligned}
+\end{equation}
+
+
+Using the Law of Total Variance, 
+
+\begin{equation}
+    \begin{aligned}
+        \operatorname{Var}(X_n) = \mathbb{E}[\operatorname{Var} (X_{n}|X_{n-1})] + \operatorname{Var}(\mathbb{E}[X_n|X_{n-1}])
+    \end{aligned}
+\end{equation}
+
+For the first item,
+
+\begin{equation}
+    \mathbb{E}\left[\operatorname{Var} \left(X_{n}|X_{n-1}\right)\right] = \mathbb{E}\left[\operatorname{Var} \left(\sum_{i=1}^{X_{n-1}} W_i|X_{n-1}\right)\right] = \mathbb{E} \left[X_{n-1} \sigma^2\right] = \sigma^2 \mathbb{E}[X_{n-1}]
+\end{equation}
+
+For the second item,
+
+\begin{equation}
+    \operatorname{Var}\left(\mathbb{E}\left[X_n|X_{n-1}\right]\right) = \operatorname{Var}\left(\mathbb{E}\left[\sum_{i=1}^{X_{n-1}} W_i|X_{n-1}\right]\right) =  \operatorname{Var}\left({X_{n-1}} \mu \right) = \mu^2 \operatorname{Var}(X_{n-1})
+\end{equation}
+
+Also we have 
+
+\begin{equation}
+    \mathbb{E}[X_n] = \mathbb{E} [\mathbb{E}X_n | X_{n-1}] = \mu \mathbb{E}[X_{n-1}] = \mu^n
+\end{equation}
+
+
+So 
+
+\begin{equation}
+    V_n  = \sigma^2 \mu^{n-1} + \mu^2 V_{n-1}
+\end{equation}
+
+And $V_1 = \operatorname{Var}(W_1) = \sigma^2$. If $\mu = 1$, $V_n = n\sigma^2$.
+
+If $\mu \neq 1$,  
+
+\begin{equation}
+    \frac{V_n}{\mu^{2n}} = \frac{V_{n-1}}{\mu^{2n-2}} + \frac{\sigma^2}{\mu^{n+1}} = \sum_{i=1}^{n} \frac{\sigma^2}{\mu^{i+1}} = \frac{\sigma^2}{\mu^{n+1}} \frac{\mu^n-1}{\mu -1}
+\end{equation}
+
+So $\operatorname{Var}(X_n) = \sigma^2 \mu^{n-1}\frac{\mu^n-1}{\mu -1}$. 
+
+In summary,
+
+\begin{equation}
+    \operatorname{Var}(X_n) = \left\{ 
+        \begin{aligned}
+            &n\sigma^2, &\quad \text{if } \mu = 1, \\
+            &\sigma^2 \mu^{n-1}\frac{\mu^n-1}{\mu -1}, & \quad \text{if } \mu \neq 1.
+        \end{aligned}
+        \right.
+\end{equation}
+
 
 \end{document}
 
