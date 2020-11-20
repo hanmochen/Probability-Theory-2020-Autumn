@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.3.23)  9 NOV 2020 22:49
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.3.23)  21 NOV 2020 00:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**HW4.tex
-(./HW4.tex
+**HW5.tex
+(./HW5.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -292,8 +292,8 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-) (./HW4.aux)
-\openout1 = `HW4.aux'.
+) (./HW5.aux)
+\openout1 = `HW5.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
 LaTeX Font Info:    ... okay on input line 27.
@@ -325,9 +325,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 27.
 LaTeX Info: Redefining \pageref on input line 27.
 LaTeX Info: Redefining \nameref on input line 27.
- (./HW4.out) (./HW4.out)
+ (./HW5.out) (./HW5.out)
 \@outlinefile=\write3
-\openout3 = `HW4.out'.
+\openout3 = `HW5.out'.
 
 
 *geometry* driver: auto-detecting
@@ -371,33 +371,27 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Try loading font information for U+msb on input line 29.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./HW4.toc)
-\tf@toc=\write4
-\openout4 = `HW4.toc'.
-
- (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
+) (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
 File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 ) [1
 
-] [2] [3]
-Missing character: There is no ， in font [lmroman10-regular]:mapping=tex-text;!
- [4] [5] [6] [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 403.
- [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 403.
- (./HW4.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 403.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 403.
-Package rerunfilecheck Info: File `HW4.out' has not changed.
-(rerunfilecheck)             Checksum: 9F19A08BEC677706EB9D0B6382EA8D51.
+] [2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 155.
+ [3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 155.
+ (./HW5.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 155.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 155.
+Package rerunfilecheck Info: File `HW5.out' has not changed.
+(rerunfilecheck)             Checksum: 6144868701C317380F408257F765D309.
  ) 
 Here is how much of TeX's memory you used:
- 10806 strings out of 492933
- 148509 string characters out of 6133145
- 258768 words of memory out of 5000000
- 14723 multiletter control sequences out of 15000+600000
- 10440 words of font info for 53 fonts, out of 8000000 for 9000
+ 10787 strings out of 492933
+ 148145 string characters out of 6133145
+ 256768 words of memory out of 5000000
+ 14715 multiletter control sequences out of 15000+600000
+ 10408 words of font info for 49 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 37i,11n,45p,811b,344s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,10n,45p,811b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on HW4.xdv (8 pages, 73744 bytes).
+Output written on HW5.xdv (3 pages, 24604 bytes).

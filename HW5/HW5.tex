@@ -1,0 +1,155 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{hyperref}
+% Margins
+\usepackage[top=2.5cm, left=3cm, right=3cm, bottom=4.0cm]{geometry}
+% Colour table cells
+\usepackage[table]{xcolor}
+
+% Get larger line spacing in table
+\newcommand{\tablespace}{\\[1.25mm]}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\tstrut{\rule{0pt}{2.0ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Exercise 5 \\ Probability Theory 2020 Autumn}
+\author{Hanmo Chen \\ 2020214276}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+
+Yes. An example is given as below.
+
+Let $X \sim N(0,1)$, denote $\alpha = \Phi^{-1}(0.75) = 0.674$. So $P(-\alpha \leqslant X \leqslant \alpha) = 0$. Define $Y$ as,
+
+\begin{equation}
+    Y = \left\{\begin{aligned}
+        & X, \quad \text{if } -\alpha \leqslant X \leqslant \alpha \\
+        & -X, \quad \text{if } X <-\alpha  \text{ or } X>\alpha
+    \end{aligned}\right.
+\end{equation}
+
+And the cdf of $Y$ is,
+
+\begin{equation}
+    F_Y(y) = P(Y\leqslant y ) = \left\{\begin{aligned}
+        & P(X\geqslant -y) = \Phi(y),&\quad  y\leqslant  - \alpha\\
+        &  P(Y\leqslant - \alpha) + P(-\alpha < Y\leqslant  y) = \Phi(y), & \quad -\alpha \leqslant y \leqslant \alpha \\
+        & P(Y\leqslant  \alpha) + P(\alpha < Y\leqslant  y) = \Phi(y),&\quad y > \alpha
+    \end{aligned}\right.
+\end{equation}
+
+So $Y \sim N(0,1)$. But 
+
+\begin{equation}
+    X+Y = \left\{\begin{aligned}
+        & 2X, \quad \text{if } -\alpha \leqslant X \leqslant \alpha \\
+        & 0, \quad \text{if } X <-\alpha  \text{ or } X>\alpha
+    \end{aligned}\right.
+\end{equation}
+
+So the distribution of $X + Y$ is not Gaussian distribution.
+
+\section{Problem 2}
+
+
+$X\sim N(0,1)$. Proof is given as below.
+
+Let $X_1,X_2, \cdots,X_n,\cdots$ be i.i.d. random variables of the same distribution with $X$. 
+
+Define $S_n = \sum_{i=1}^n X_i$. Let $T_{1} = \frac{X_1+X_2}{ \sqrt{2}} = \frac{S_2}{\sqrt{2}}$, $T_1' = \frac{X_3+X_4}{\sqrt{ 2}} = \frac{S_4 -S_2}{ \sqrt{2}}$, so $T_1,T_1'$ follows the same distribution with $X$. Let $T_2 = \frac{T_1+T_1'}{\sqrt{2}} = \frac{S_4}{\sqrt{4}}$ also follows the same distribution of $X$. And define $T_n = \frac{S_{2^n}}{\sqrt{2^n}}$, and its distribution is also the same distribution of $X$. 
+
+According to CLT, 
+
+\begin{equation}
+    \frac{S_{2^n}}{\sqrt{2^n}} \overset{d.}{\to} N(0,1)
+\end{equation}
+
+So the distribution of $X$ is $N(0,1)$.
+
+Note: another possible method is to consider the characteristic function $\phi_{X}(t)$, we can get an equation $\phi_{X}(t) = [\phi_{X}(\frac{t}{\sqrt{2}})]^2$. Also we have $\phi_{X}(0) =1,\phi_{X}'(0) =0,\phi_{X}''(0) =1 $. By solving the function equation we can get $\phi_X(t) = \exp({-\frac{t^2}{2}})$ and $X \sim N(0,1)$. 
+
+\section{Problem 3}
+\subsection{(1)}
+Denote $-S$ as the exponent of the density function.
+
+\begin{equation}
+    \begin{aligned}
+        S & = \frac{1}{2}\left(x_{1}^{2}+\sum_{i=1}^{2 n-2}\left(x_{i+1}-x_{i}\right)^{2}+x_{2 n-1}^{2}\right) \\
+        & = \sum_{i=1}^{2n-1} x_i^2 - \sum_{i=1}^{2 n-2} x_{i+1}x_i\\
+        & = \sum_{i=1}^{2n-2} A_i( x_i-B_i x_{i+1})^2 + A_{2n-1} x_{2n-1}^2
+    \end{aligned}
+\end{equation}
+
+To find $A_i,B_i$, compare the coefficents, 
+
+\begin{equation}
+    \left\{\begin{aligned}
+        & 2 A_i B_i = 1\\
+        & A_i B_i^2 + A_{i+1} = 1\\
+        & A_1 = 1 
+    \end{aligned}\right.
+\end{equation}
+
+By induction we have $B_n = \frac{n}{n+1},A_n = \frac{n+1}{2n}$. 
+
+And let $Y_i = \sqrt{2A_i} ( X_i-B_i X_{i+1}),i=1,2,\cdots,2n-2,Y_{2n-1} = \sqrt{2A_{2n-1}} X_{2n-1} $. 
+
+\begin{equation}
+    f_{Y_1,\cdot,Y_n}(y_1,y_n) =\left(\prod_{i=1}^{2n-1} \sqrt{2A_i} \right)^{-1}c_n \exp\left(-\frac{1}{2}\left(\sum_{i=1}^{2n-1} y_i^2\right)\right)
+\end{equation}
+
+Obviously $(Y_1,\cdots,Y_{2n-1})$ is a Gaussian random vector, so $(X_1,\cdots,X_{2n-1})$ as linear combinations of $(Y_1,\cdots,Y_{2n-1})$ is also a Gaussian vector.
+
+\subsection{(2)}
+
+
+\begin{equation}
+    \left(\prod_{i=1}^{2n-1} \sqrt{2A_i} \right)^{-1}c_n  = (\sqrt{2\pi})^{-(2n-1)}
+\end{equation}
+
+So $c_n = \frac{\sqrt{2n}}{(\sqrt{2\pi})^{2n-1}}$
+
+\subsection{(3)}
+
+To find $\operatorname{Var}(X_n)$ we need to find the inverse transform $X= M^{-1}Y$. 
+However, since $Y_i$ are independent standard Gaussian variables, and $X_i $ are just linear combinations of $Y_i,Y_{i+1},\cdots, Y_{2n-1}$, so $X_{i+1}$ and $Y_i$ are independent.
+
+By $X_i = \sqrt{\frac{i}{i+1}} Y_i + \frac{i}{i+1} X_{i+1}$,
+\begin{equation}
+    \operatorname{Var}(X_i) = \frac{i^2}{(i+1)^2}  \operatorname{Var}(X_{i+1}) + \frac{i}{i+1}
+\end{equation}
+
+And $\operatorname{Var}(X_{2n-1})  = \frac{2n-1}{2n}$. By induction,
+
+\begin{equation}
+    \operatorname{Var}(X_{i})  = \frac{(2n-i)i}{2n}
+\end{equation}
+
+So $\operatorname{Var}(X_{n}) = \frac{n}{2}$.
+
+Note: another tricky method. Notice that $X_i$ are symmetric about $n$, so $\operatorname{Var}(X_{n-1}) = \operatorname{Var}(X_{n+1})$.
+
+And by letting $i=n,n-1$ in (9),
+
+\begin{equation}
+    \left\{\begin{aligned}
+        & \operatorname{Var}(X_n) = \frac{n^2}{(n+1)^2}  \operatorname{Var}(X_{n+1}) + \frac{n}{n+1} \\
+        & \operatorname{Var}(X_{n-1}) = \frac{(n-1)^2}{n^2}  \operatorname{Var}(X_{n}) + \frac{n-1}{n}
+    \end{aligned}
+        \right.
+\end{equation}
+
+Solving the equation, we also get $\operatorname{Var}(X_{n}) = \frac{n}{2}$.
+\end{document}
