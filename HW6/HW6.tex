@@ -20,7 +20,7 @@
 %%%%%%%%%%%%%%%%%
 %     Title     %
 %%%%%%%%%%%%%%%%%
-\title{Exercise 5 \\ Probability Theory 2020 Autumn}
+\title{Exercise 6 \\ Probability Theory 2020 Autumn}
 \author{Hanmo Chen \\ 2020214276}
 \date{\today}
 
@@ -29,37 +29,32 @@
 
 \section{Problem 1}
 
-Yes. An example is given as below.
-
-Let $X \sim N(0,1)$, denote $\alpha = \Phi^{-1}(0.75) = 0.674$. So $P(-\alpha \leqslant X \leqslant \alpha) = 0$. Define $Y$ as,
-
 \begin{equation}
-    Y = \left\{\begin{aligned}
-        & X, \quad \text{if } -\alpha \leqslant X \leqslant \alpha \\
-        & -X, \quad \text{if } X <-\alpha  \text{ or } X>\alpha
-    \end{aligned}\right.
+    P(S_i\geqslant 0, \forall 1\leqslant i \leqslant 2n |S_{2n} = 0 ) = \frac{P(S_i\geqslant 0, \forall 1\leqslant i \leqslant 2n-1 ,S_{2n} = 0 )}{P(S_{2n} = 0)}
 \end{equation}
 
-And the cdf of $Y$ is,
+Consider the event $\{S_i\geqslant 0, \forall 1\leqslant i \leqslant 2n-1 ,S_{2n} = 0\}$ partitioned by its first return to zero,
 
 \begin{equation}
-    F_Y(y) = P(Y\leqslant y ) = \left\{\begin{aligned}
-        & P(X\geqslant -y) = \Phi(y),&\quad  y\leqslant  - \alpha\\
-        &  P(Y\leqslant - \alpha) + P(-\alpha < Y\leqslant  y) = \Phi(y), & \quad -\alpha \leqslant y \leqslant \alpha \\
-        & P(Y\leqslant  \alpha) + P(\alpha < Y\leqslant  y) = \Phi(y),&\quad y > \alpha
-    \end{aligned}\right.
+    \left\{S_i\geqslant 0, \forall 1\leqslant i \leqslant 2n-1 ,S_{2n} = 0\right\} = \bigcup_{j=1}^{n}\left\{S_i> 0, \forall 1\leqslant i \leqslant 2j-1 ,S_{2j} = 0,S_{i} \geqslant 0,\forall 2j+1\leqslant i \leqslant 2n-1,S_{2n} = 0 \right\}
 \end{equation}
 
-So $Y \sim N(0,1)$. But 
+Denote $p_{2n} = P(S_i\geqslant 0, \forall 1\leqslant i \leqslant 2n-1 ,S_{2n} = 0 )$ and $q_{2n} = P(S_i> 0, \forall 1\leqslant i \leqslant 2n-1 ,S_{2n} = 0 )$,
+
+Define $P(z)= \sum_{n=0}^{\infty} p_{2n} z^n , Q(z) = \sum_{n=1}^{\infty}q_{2n} z^n = \frac{1}{2} F(z)$
+
 
 \begin{equation}
-    X+Y = \left\{\begin{aligned}
-        & 2X, \quad \text{if } -\alpha \leqslant X \leqslant \alpha \\
-        & 0, \quad \text{if } X <-\alpha  \text{ or } X>\alpha
-    \end{aligned}\right.
+    P(z) = \frac{1}{1- Q (z)} = \frac{2}{1+\sqrt{1-z}} = \frac{2}{z} (1-\sqrt{1-z}) =\frac{2}{z} F(z)
 \end{equation}
 
-So the distribution of $X + Y$ is not Gaussian distribution.
+
+So $p_{2n} =2f_{2n+2} = \frac{2}{2n+1} \binom{2n+2}{n+1} \frac{1}{2^{2n+2}}$. Thus,
+
+\begin{equation}
+    P(S_i\geqslant 0, \forall 1\leqslant i \leqslant 2n |S_{2n} = 0 ) =  \frac{p_{2n}}{u_{2n}} = \frac{1}{n+1}
+\end{equation}
+
 
 \section{Problem 2}
 
