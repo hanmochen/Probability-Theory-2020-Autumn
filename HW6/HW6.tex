@@ -6,6 +6,9 @@
 \usepackage{parskip}
 \usepackage{graphicx}
 \usepackage{hyperref}
+% \usepackage{unicode-math}
+\usepackage{dsfont}
+% \usepackage{bbm}
 % Margins
 \usepackage[top=2.5cm, left=3cm, right=3cm, bottom=4.0cm]{geometry}
 % Colour table cells
@@ -16,7 +19,9 @@
 \newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
 \newcommand\tstrut{\rule{0pt}{2.0ex}}         % = `top' strut
 \newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
-
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Var}{\operatorname{Var}}
+\DeclareMathOperator{\Cov}{\operatorname{Cov}}
 %%%%%%%%%%%%%%%%%
 %     Title     %
 %%%%%%%%%%%%%%%%%
@@ -133,6 +138,166 @@ If $c> \frac{1}{\log \frac{1}{p}}$,
 
 Thus $\forall c >\frac{1}{\log \frac{1}{p}},\lim\limits_{n\to \infty} P(L_{\max}^{(n)} \geqslant  c\log n ) = 0 $. $f(p) = \frac{1}{\log \frac{1}{p}}$.
 
+\section{Problem 3}
+
+\subsection{(i)}
+
+Note that $P(N_m \geqslant 1)$ is the probability $X_i$ reaches $m$ before returning to zero. 
+
+First we consider the probability a random walk staring from $k$ reaches $0$ before to $N$, which is the gambler's ruin probability, and we denote it as $p_k$. It is easy to see that 
+
+\begin{equation}
+    p_k = \frac{1}{2} (p_{k-1}+p_{k+1} )
+\end{equation}
+
+And $p_0 = 1,p_N = 0$. So $p_k = \frac{N-k}{N}$
+
+In our case, because $m> 0$, $X_1$ must be $1$, starting from $X_1 = 1$, the probability $X_i$ reaches $m$ before to $0$ is $\frac{1}{m}$, so 
+
+\begin{equation}
+    P(N_m \geqslant 1) = P(X_1 = 1) P(N_m \geqslant 1\mid X_1 = 1)  = \frac{1}{2m}
+\end{equation}
 
 
+\subsection{(ii)}
+
+From (i) we know that $ P(N_m = 0) = 1 - \frac{1}{2m}$.
+
+The event $m$ is visit $n$ times before returning to $0$ can be splits into some phases, 
+
+\begin{enumerate}
+    \item Starting from $0$, visit $m$ before returning to $0$
+    \item Starting from $m$, return to $m$ before visiting $0$ (Repeat $n-1$ times )
+    \item Starting from $m$,  visit $0$ before returning to $m$
+\end{enumerate}
+
+And starting from $m$, return to $m$ before visiting $0$ is the same as starting from $0$, return to $0$ before visiting $-m$. And according to symmetry, the distribution of $N_{-m}$ is the same with $N_m$
+
+\begin{equation}
+    P(N_m = n) = P(N_m \geqslant 1) P(N_m = 0)^{n-1} P(N_m \geqslant 1) = \frac{1}{4 m^2} \left(1-\frac{1}{2m}\right)^{n-1}
+\end{equation}
+
+\section{Problem 4}
+
+\subsection{(i)}
+
+If the passengers arrives after $T$ and waits until forever, then $\E[W] = \infty$. In the following we assume no passenger comes after $T$. 
+
+
+Suppose there are $N(T)$ passengers waiting when the train arrives at $T$, and the arrival time is $S_1,S_2,\cdots,S_{N_T}$, the total waiting time,
+
+\begin{equation}
+    W = \sum_{i=1}^{N(t)} T-S_i = 
+\end{equation}
+
+Due to the uniformity of previous arrival times,
+
+\begin{equation}
+    \E[W|N(t) = n] = \E[\sum_{i=1}^{n} T-S_i | N(t) = n] = nT - \E[\sum_{i=1}^n U_i | N(t) = n]
+\end{equation}
+
+where $U_i \sim \text{Uniform}[0,T],i = 1,2,\cdots,n$. Thus,
+
+\begin{equation}
+    \E[W|N(t) = n] = \frac{nT}{2} 
+\end{equation}
+
+So,
+
+\begin{equation}
+    \E[W] = \E[\E[W|N(t) = n]] = \frac{T}{2}\E[N(T)] = \frac{\lambda T^2}{2}
+\end{equation}
+
+
+\subsection{(ii)}
+
+Consider the two independent Poisson process in the time interval $[0,S]$ and $[S,T]$ with the same rate $\lambda$, applying the conclusion in (i),
+
+
+\begin{equation}
+    \E[W] =  \frac{\lambda S^2 }{2} + \frac{\lambda (T-S)^2 }{2}
+\end{equation}
+
+\section{Problem 5}
+
+In lecture 12, we have
+\begin{equation}
+    \lim_{n\to \infty} P(\text{G is connnected}) = \lim_{n\to \infty} P(\text{G has no iso vertices})  = \lim_{n\to \infty} P(Z_{iso} = 0)
+\end{equation}
+
+Also,
+
+
+\begin{equation}
+    \E \binom{Z_{iso}}{r} = \binom{n}{r} (1-p)^{r(n-1) - \binom{r}{2}} \sim \frac{1}{r!} \frac{n!}{(n-r)!} \exp \left(  - p(rn - \frac{r^2}{2}) \right) \sim \frac{1}{r!} \frac {n!}{(n-r)! n^r} e^{-cr}
+\end{equation} 
+
+\begin{equation}
+    \E \binom{Z_{iso}}{r} \sim \frac{1}{r!}e^{-cr}
+\end{equation}
+
+So $Z_iso $ converges in distribution to a Poisson($e^{-c}$) random variable.
+
+
+\begin{equation}
+    \lim_{n\to \infty} P(\text{G is connnected}) =  \lim_{n\to \infty} P(Z_{iso} = 0) = \exp\left(- e^{-c}\right)
+\end{equation}
+
+
+\section{Problem 6}
+
+Denote $Y_n$ be the number of $K_4$ in $G$.
+
+\begin{equation}
+    Y_n = \sum_{T \in \binom{[n]}{4}} \mathds{1}(T\in G)
+\end{equation}
+
+Obviously,
+
+\begin{equation}
+    \E [Y_n] \leqslant n^4 p ^6  = (n^{\frac{2}{3}-\delta}  )^6
+\end{equation}
+
+So if $\delta > \frac{2}{3}$,
+
+\begin{equation}
+    \lim_{n\to\infty} P(\text{G contains 4 vertices that are pairwise connected}) = \lim_{n\to\infty} P(Y_n \geqslant 1) \leqslant \lim_{n\to\infty} \E [Y_n] = 0
+\end{equation}
+
+Then we consider $\Var(Y_n)$
+
+\begin{equation}
+    \Var \left(Y_{n}\right)=\sum_{S,T \in \binom{[n]}{4}} \Cov (\mathds{1}(S \in G), \mathds{1}(T \in G))
+\end{equation}
+
+Consider $|S\cap T|$, \begin{enumerate}
+    \item $|S\cap T| \leqslant 1$: $\Cov(S\cap T) = 0$
+    \item $|S\cap T| = 2$: There are $\leqslant \binom{n}{6} \binom{6}{2} \binom{4}{2}$ possible combinations of $(S,T)$, and $$\Cov (\mathds{1}(S \in G), \mathds{1}(T \in G)) \leqslant p^{11}$$
+    \item $|S\cap T| = 3$: There are $\leqslant \binom{n}{5} \binom{5}{3} \binom{2}{1}$ possible combinations of $(S,T)$, and $$\Cov (\mathds{1}(S \in G), \mathds{1}(T \in G)) \leqslant p^{9}$$
+    \item $|S\cap T| = 4,S=T$, There are $ \binom{n}{4} $ possible $S$, and $\Var(\mathds{1}(S \in G)) \leqslant p^6$
+\end{enumerate}
+
+Combining these cases,
+
+\begin{equation}
+    \Var \left(Y_{n}\right) \leqslant n^4 p^6 + n^5 p^9 + n^6 p ^{11} = n ^{4-6\delta} + n ^{5-9\delta} + n^{6-11\delta}
+\end{equation}
+
+And 
+\begin{equation}
+    \frac{\Var(Y_n)}{ (\E[Y_n])^2} \leqslant \frac{n^{4-6\delta} + n ^{5-9\delta} + n^{6-11\delta}}{ \binom{n}{4} p^6} \sim n^{6\delta - 4} o(1) 
+\end{equation}
+
+
+So if $\delta <\frac{2}{3}$,
+
+\begin{equation}
+    \lim_{n\to\infty} P(Y_n = 0) \leqslant \lim_{n\to \infty}  \frac{\Var(Y_n)}{ (\E[Y_n])^2} = 0
+\end{equation}
+
+\begin{equation}
+    \lim_{n\to\infty} P(\text{G contains 4 vertices that are pairwise connected}) = 1 
+\end{equation}
+
+So $\delta_0 = \frac{2}{3}$
 \end{document} 

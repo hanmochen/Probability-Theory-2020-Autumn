@@ -1,9 +1,9 @@
 # Fdb version 3
-["xdvipdfmx"] 1607342718 "HW6.xdv" "HW6.pdf" "HW6" 1607342719
-  "HW6.xdv" 1607342718 16764 13ded02b05b26f1fda41f41c77036891 "xelatex"
+["xdvipdfmx"] 1607398856 "HW6.xdv" "HW6.pdf" "HW6" 1607398858
+  "HW6.xdv" 1607398855 45580 95e8b6ca0e9cec417d7a522390a2d12d "xelatex"
   (generated)
   "HW6.pdf"
-["xelatex"] 1607342717 "HW6.tex" "HW6.xdv" "HW6" 1607342719
+["xelatex"] 1607398854 "HW6.tex" "HW6.xdv" "HW6" 1607398858
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1480098689 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
@@ -24,6 +24,8 @@
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/doublestroke/dsrom10.tfm" 1480098703 452 168d896d9b2ead965bf08c9db69c947f ""
+  "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/doublestroke/dsrom8.tfm" 1480098703 452 dc44cdd7c88ff2b15557f125edfc277b ""
   "/usr/local/texlive/2018/texmf-dist/tex/generic/babel-english/english.ldf" 1496785618 7008 9ff5fdcc865b01beca2b0fe4a46231d4 ""
   "/usr/local/texlive/2018/texmf-dist/tex/generic/babel/babel.def" 1542149371 74097 730193adbb112990f38051a05f35ac11 ""
   "/usr/local/texlive/2018/texmf-dist/tex/generic/babel/babel.sty" 1542149371 16329 4c42e43c85185e6cb0936a628ade375c ""
@@ -54,6 +56,8 @@
   "/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty" 1544567569 5052 b64c57f4a38aae0d2745f8298fa50814 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/base/size10.clo" 1544567569 8294 6d6e23d5169c0d89d173f6c7e08a005a ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/colortbl/colortbl.sty" 1544741426 10678 47854138cd4fdca1d7b24b0290c999d4 ""
+  "/usr/local/texlive/2018/texmf-dist/tex/latex/doublestroke/Udsrom.fd" 1480098826 211 101be7da01334f0b54b41fbe634f1ce4 ""
+  "/usr/local/texlive/2018/texmf-dist/tex/latex/doublestroke/dsfont.sty" 1480098826 230 7bc61880b468bfd38aedc173be7c3486 ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1534713891 43865 f83cc2fa3767abdb988c7d2cd17c02bf ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty" 1525727744 41645 0653033a985e06c69a2a9cea9a95e31a ""
   "/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1480098830 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
@@ -79,11 +83,11 @@
   "/usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf" 1544742277 35176 ce7fee66be1fb01dfc6b702a7dbfa0ea ""
   "/usr/local/texlive/2018/texmf-var/web2c/xetex/xelatex.fmt" 1553378829 3737826 3c9ee2198fc3e18a713a1b12e057fce6 ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "HW6.aux" 1607342718 862 1c19fb561abcaabbc5f93d6b6633258c ""
-  "HW6.out" 1607342718 94 ca72f9a05163aa16423c137cc7e44360 ""
-  "HW6.tex" 1607342715 5523 74ee72e956dda9a726a2e7ad5ccd223b ""
+  "HW6.aux" 1607398855 1728 482a5c65c27725fa5cc6252c831093e6 ""
+  "HW6.out" 1607398855 501 4d113aedf8907a6434e628abac98c6ad ""
+  "HW6.tex" 1607398853 11015 b7adb19cdd52c851057e5c310a81a3f6 ""
   (generated)
-  "HW6.aux"
-  "HW6.log"
   "HW6.xdv"
   "HW6.out"
+  "HW6.log"
+  "HW6.aux"
