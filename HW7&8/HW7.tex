@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{hyperref}
+% \usepackage{unicode-math}
+\usepackage{dsfont}
+% \usepackage{bbm}
+% Margins
+\usepackage[top=2.5cm, left=3cm, right=3cm, bottom=4.0cm]{geometry}
+% Colour table cells
+\usepackage[table]{xcolor}
+
+% Get larger line spacing in table
+\newcommand{\tablespace}{\\[1.25mm]}
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\tstrut{\rule{0pt}{2.0ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Var}{\operatorname{Var}}
+\DeclareMathOperator{\Cov}{\operatorname{Cov}}
+\newcommand{\vu}{\boldsymbol{u}}
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Exercise 7 \& 8 \\ Probability Theory 2020 Autumn}
+\author{Hanmo Chen \\ 2020214276}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Problem 1}
+
+Denote the entries in $U$ as $u_{ij}$ and entries in $Y$ as $Y_{ij}$,so 
+
+\begin{equation}
+    Y_{ij} = \sum_{r,s} u_{ri} u_{sj} X_{ij} 
+\end{equation}
+
+Also we have,
+
+\begin{equation}
+    \Cov(X_{ij},X_{mn}) = \left\{\begin{aligned}
+        &2,\quad i=j=m=n \\
+        &1,\quad (i,j) = (m,n) \text{ or } (i,j) = (n,m), i \neq j \\
+        &0,\quad \text{otherwise}
+    \end{aligned}\right.
+\end{equation}
+
+Thus
+
+\begin{equation}
+    \begin{aligned}
+        \Cov(Y_{ij},Y_{mn}) & = \Cov\left(\sum_{r,s} u_{ri} u_{sj} X_{ij}, \sum_{p,q} u_{pm} u_{qn} X_{mn} \right) \\
+        & = 2\sum_{r=1}^n u_{ri}u_{rj} u_{rm}u_{rn} + \sum_{r\neq s} u_{ri} u_{sj} u_{rm} u_{sn} + \sum_{r\neq s} u_{ri} u_{sj} u_{rn} u_{sm} \\
+        & = \sum_{r,s}\left[u_{ri} u_{sj} u_{rm} u_{sn}+u_{ri} u_{sj} u_{rn} u_{sm} \right] \\
+        & = \left(\sum_{r} u_{ri} u_{rm} \right) \left(\sum_{s} u_{sj} u_{rn} \right) + \left(\sum_{r} u_{ri} u_{rn} \right) \left(\sum_{s} u_{sj} u_{sm} \right) 
+    \end{aligned}
+\end{equation}
+
+Denote the column vectors in $U$ as $\vu_i,i=1,2,3,\cdots,N$, so $\vu_i\cdot \vu_j = \sum_{r} u_{ri} u_{rj} = \delta_{ij}$. 
+
+\begin{equation}
+    \Cov(Y_{ij},Y_{mn}) = \delta_{im} \delta_{jn} +  \delta_{jm} \delta_{in} = \left\{ \begin{aligned}
+        &2,\quad i=j=m=n \\
+        &1,\quad (i,j) = (m,n) \text{ or } (i,j) = (n,m), i \neq j \\
+        &0,\quad \text{otherwise}
+    \end{aligned}\right.
+\end{equation}
+
+Because $X_{ij}, j \geqslant i $ are independent Gaussian variables, so the joint distribution of $Y_{ij}$ is joint Gaussian distribution, which means,
+
+\begin{equation}
+    \Cov(Y_{ij},Y_{mn}) = 0 \Longleftrightarrow Y_{ij},Y_{mn} \text{ are independent}
+\end{equation}
+
+So all the entries on and above the diagonal of $Y$ are independent, and $Y_{ii} \sim N(0,2), i =1,2,3,\cdots,N$ and $Y_{ij} \sim N(0,1), 1\leqslant i < j \leqslant n$. (It is easy to see that $\E[Y_{ij}] = 0$)
+
+\section{Problem 2}
+
+
+\end{document} 
