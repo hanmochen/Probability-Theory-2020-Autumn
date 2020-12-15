@@ -162,6 +162,92 @@ The limis equals to the steady-state probability,
 
 \section{Problem 4}
 
+\subsection{(i)}
+
+Denote the function $f(n)$ as $P(X_n >0, \forall n\geqslant 2 | X_1 = n)$ So the probability that the chain never returns to zero is $f(1)$. When $X_0=0$, $X_1=1$, and  $X_2$ must be $2$. So $f(1) = \frac{4}{5}f(2)$.
+
+Consider $f(2)$,
+
+\begin{equation}
+    \begin{aligned}
+        f(2) &= P(X_n >0, \forall n\geqslant 2 | X_1 = 2) \\ & = P(X_2 =1, X_n >0,\forall n\geqslant 3 | X_1= 2)  + P(X_2 =3, X_n >0,\forall n\geqslant 3 | X_1 = 2) \\
+        & = p_{21} P(X_n >0, \forall n\geqslant1 | X_1 = 1) + p_{23} P(X_n >0, \forall n\geqslant1 | X_1 = 3) \\
+        & = \frac{4}{13} f(1) + \frac{9}{13} f(3)
+    \end{aligned}
+\end{equation}
+
+Because $f(2) = \frac{5}{4} f(1)$
+
+\begin{equation}
+    f(3) - f(2) = \frac{4}{9} (f(2)-f(1)])  = \frac{4}{9} \times \frac{1}{4} f(1) = \frac{1}{9} f(1)
+\end{equation}
+
+In general, we have
+
+\begin{equation}
+    f(n+1) - f(n) = \frac{n^2}{((n+1)^2} (f(n) -f (n-1)) = \frac{1}{(n+1)^2} f(1)
+\end{equation}
+
+So 
+
+\begin{equation}
+    f(n) = \sum_{i=1}^n \frac{1}{i^2} f(1)
+\end{equation}
+
+And note that $f(n) \to 1$ as $n \to \infty$, using the famous lemma \begin{equation}
+    \sum_{i=1}^{\infty}  \frac{1}{i^2} = \frac{\pi^2}{6}
+\end{equation}
+
+So $f(1)= \frac{6}{\pi^2}$. And the probability that the chain never returns to zero is $\frac{6}{\pi^2}$.
+
+
+\subsection{(ii)}
+
+Using the same method, we have 
+\begin{equation}
+    f(n) = \sum_{i=1}^n \frac{1}{i^\alpha} f(1)
+\end{equation}
+
+When $\alpha> 1$, $\sum_{i=1}^n \frac{1}{i^\alpha}$ converges, so $0<f(1)<1$. The markov chain is transient (because it is irreducible and state $0$ is transient) .
+
+
+When $\alpha\leqslant 1$, $\sum_{i=1}^n \frac{1}{i^\alpha}$ goes to $\infty$, so $f(1) = 0$. The markov chain is recurrent (because it is irreducible and state $0$ is recurrent) .
+
+And to determine it is positive recurrent or null recurrent, we assume the stationary distribution be $\pi^* = (\pi_i)_{i=0}^{\infty}$. Obviously we have $\pi_0 = \frac{1}{2^{\alpha}+1} \pi_1$ and for $n\geqslant 1$, we have 
+
+\begin{equation}
+    \pi_n = p_{n-1,n}\pi_{n-1} + p_{n+1,n}\pi_{n+1} 
+\end{equation}
+
+Thus we have 
+
+\begin{equation}
+    p_{n+1,n} \pi_{n+1} - p_{n,n+1}  \pi_{n} = p_{n,n-1} \pi_{n} - p_{n-1,n}  \pi_{n-1} = p_{1,0} \pi_{1} - \pi_{0} = 0
+\end{equation}
+
+So 
+
+\begin{equation}
+    \pi_{n+1} = \frac{p_{n,n+1}}{p_{n+1,n}} \pi_{n} = \frac{(n+2)^\alpha + (n+1)^\alpha}{(n+1)^\alpha + n^\alpha} \pi_{n} = ((n+2)^{\alpha} +(n+1)^\alpha) \pi_{0}
+\end{equation}
+
+And $\sum_{n=0}^{\infty} \pi_{n}= 1$
+\begin{equation}
+    \pi_0 \sum_{n=0}^{\infty} (n^\alpha + (n+1)^{\alpha}) = 1
+\end{equation}
+
+When $\alpha \geqslant -1$, $\sum_{n=0}^{\infty} n^\alpha $ goes to $\infty$, $\pi_0 = 0$, the Markov chain is null recurrent.
+
+When $\alpha < -1$, $\sum_{n=0}^{\infty} n^\alpha $ converges, $0<\pi_0 < 1$, the Markov chain is positive recurrent. And $\pi_0  = \frac{1}{2\zeta(-\alpha) }$, where $\zeta(s) = \sum_{i=1}^{\infty} \frac{1}{n^s}$ is the Riemann function.
+
+In summary,
+
+\begin{itemize}
+    \item When $\alpha> 1$, the Markov chain is transient.
+    \item When $-1 \leqslant \alpha \leqslant 1$, the Markov chain is null recurrent.
+    \item When $\alpha < 1$, the Markov chain is positive recurrent.
+\end{itemize}
+
 
 % Denote $S_k = \sum_{i=0}^k Y_i$ and $S_0 = 0$
 
