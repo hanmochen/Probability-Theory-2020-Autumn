@@ -164,14 +164,14 @@ The limis equals to the steady-state probability,
 
 \subsection{(i)}
 
-Denote the function $f(n)$ as $P(X_n >0, \forall n\geqslant 2 | X_1 = n)$ So the probability that the chain never returns to zero is $f(1)$. When $X_0=0$, $X_1=1$, and  $X_2$ must be $2$. So $f(1) = \frac{4}{5}f(2)$.
+Denote the function $f(n)$ as $P(X_n >0, \forall n\geqslant 1 | X_0 = n)$ So the probability that the chain never returns to zero is $f(0) = f(1)$. When $X_0=0$, $X_1=1$, and  $X_2$ must be $2$. So $f(1) = \frac{4}{5}f(2)$.
 
 Consider $f(2)$,
 
 \begin{equation}
     \begin{aligned}
-        f(2) &= P(X_n >0, \forall n\geqslant 2 | X_1 = 2) \\ & = P(X_2 =1, X_n >0,\forall n\geqslant 3 | X_1= 2)  + P(X_2 =3, X_n >0,\forall n\geqslant 3 | X_1 = 2) \\
-        & = p_{21} P(X_n >0, \forall n\geqslant1 | X_1 = 1) + p_{23} P(X_n >0, \forall n\geqslant1 | X_1 = 3) \\
+        f(2) &= P(X_n >0, \forall n\geqslant 1 | X_0 = 2) \\ & = P(X_1 =1, X_n >0,\forall n\geqslant 2 | X_0= 2)  + P(X_1 =3, X_n >0,\forall n\geqslant 2 | X_0 = 2) \\
+        & = p_{21} P(X_n >0, \forall n\geqslant1 | X_0 = 1) + p_{23} P(X_n >0, \forall n\geqslant1 | X_0 = 3) \\
         & = \frac{4}{13} f(1) + \frac{9}{13} f(3)
     \end{aligned}
 \end{equation}
@@ -213,7 +213,7 @@ When $\alpha> 1$, $\sum_{i=1}^n \frac{1}{i^\alpha}$ converges, so $0<f(1)<1$. Th
 
 When $\alpha\leqslant 1$, $\sum_{i=1}^n \frac{1}{i^\alpha}$ goes to $\infty$, so $f(1) = 0$. The markov chain is recurrent (because it is irreducible and state $0$ is recurrent) .
 
-And to determine it is positive recurrent or null recurrent, we assume the stationary distribution be $\pi^* = (\pi_i)_{i=0}^{\infty}$. Obviously we have $\pi_0 = \frac{1}{2^{\alpha}+1} \pi_1$ and for $n\geqslant 1$, we have 
+And to determine it is positive recurrent or null recurrent, we assume the stationary distribution is $\pi^* = (\pi_i)_{i=0}^{\infty}$. Obviously we have $\pi_0 = \frac{1}{2^{\alpha}+1} \pi_1$ and for $n\geqslant 1$, we have 
 
 \begin{equation}
     \pi_n = p_{n-1,n}\pi_{n-1} + p_{n+1,n}\pi_{n+1} 
@@ -248,7 +248,101 @@ In summary,
     \item When $\alpha < 1$, the Markov chain is positive recurrent.
 \end{itemize}
 
+\section{Problem 5}
 
+Denote the function $f(n)$ as $P(X_n >0, \forall n\geqslant 1 | X_0 = n)$. The probability that the Markov chain never returns to zero is $ f(1)$. Also we have $f(2) = p f(3), f(1)= pf(3)+ (1-p)f(2)$. So $f(2) = \frac{1}{2-p}f(1),f(3) = \frac{1}{(2-p)p} f(1)$. And for $n\geqslant 2$, 
+
+
+\begin{equation}
+    \left\{ 
+        \begin{aligned}
+            f(2n-1) = pf(2n+1) + (1-p) f(2n) \\
+        f(2n) = pf(2n+1) + (1-p) f(2n-2)
+        \end{aligned}
+    \right.
+\end{equation}
+
+\begin{equation}
+    \left\{ 
+        \begin{aligned}
+            &f(2n) = \frac{1}{2-p} ((1-p)f(2n-2) + f(2n-1)) \\
+            &f(2n+1) = \frac{1}{(2-p)p} (f(2n-1) -(1-p)^2 f(2n-2))
+        \end{aligned}
+    \right.
+\end{equation}
+
+Solving the equation $f(2n+1)+\lambda f(2n) = C(f(2n-1)+\lambda f(2n-2))$, we have $\lambda=-1$ and $\frac{-(1-p)^2}{p}$. Thus,
+
+\begin{equation}
+    \left\{ 
+        \begin{aligned}
+            & f(2n+1)-f(2n) = \frac{(1-p)}{(2-p)p} (f(2n-1)  -f(2n-2)) = \left[\frac{(1-p)}{(2-p)p}\right]^n f(1) \\
+            &f(2n+1)-\frac{(1-p)^2}{ p} f(2n) = f(2n-1)-\frac{(1-p)^2}{ p} f(2n-2) = f(1)
+        \end{aligned}
+    \right.
+\end{equation}
+
+When $ \frac{(1-p)}{(2-p)p} >1, p<\frac{3-\sqrt{5}}{2}$, $f(1)$ must be $0$. So the chain is recurrent.
+
+When $\frac{(1-p)}{(2-p)p}  = 1, p = \frac{3-\sqrt{5}}{2}$, $f(2n+1)-f(2n) = f(1)$. Using equation (23), we have $f(2n+1) =  f(2n-1)+(1-p)f(1)$, because $1-p >0$, $f(1)$ must be zero and the chain is recurrent.
+
+And when $\frac{(1-p)}{(2-p)p}  < 1, p>\frac{3-\sqrt{5}}{2}$, $f(1) = 1 - \frac{(1-p)^2}{p} >0$, the chain is transient.
+
+
+To determine whether it is positive or null recurrent, we assume the stationary distribution is $\pi^* = (\pi_i)_{i=0}^{\infty}$.
+
+So $\pi_0 = (1-p) \pi_2,\pi_1 = \pi_0$. For $n\geqslant 1$,
+
+\begin{equation}
+    \left\{\begin{aligned}
+        & \pi_{2n+1} = p\pi_{2n-1} + p\pi_{2n} \\
+        & \pi_{2n} = (1-p)\pi_{2n-1} + (1-p)\pi_{2n+2}
+    \end{aligned}
+    \right.
+\end{equation}
+
+Solving the equation $\pi_{2n+1} + \lambda \pi_{2n+2} = C(\pi_{2n-1} + \lambda \pi_{2n})$, $\lambda = - (1-p)$ or $- \frac{p}{1-p}$.
+
+So 
+
+\begin{equation}
+    \left\{\begin{aligned}
+        & \pi_{2n+1} - (1-p)\pi_{2n+2} = \pi_{2n-1} - (1-p)\pi_{2n} = 0 \\
+        & \pi_{2n+1} - \frac{p}{1-p}\pi_{2n+2} = \frac{p(2-p)}{1-p} (\pi_{2n-1} - \frac{p}{1-p}\pi_{2n}) = \left[\frac{p(2-p)}{1-p}\right]^n (\pi_1 - \frac{p}{1-p} \pi_2)
+    \end{aligned}
+    \right.
+\end{equation}
+
+So \begin{equation}
+    \frac{p^2 - 3p+1}{1-p} \pi_{2n+2} = \left[\frac{p(2-p)}{1-p}\right]^n \frac{p^2 - 3p+1}{1-p} \pi_{2}
+\end{equation}
+
+When $p = \frac{3-\sqrt{5}}{2},p^2-3p+1 = 0$, in equation (26) we have that $\pi_{2n+1} = (1-p) \pi_{2n} = \pi_{2n-1}$, by $\sum_{n=0}^{\infty} \pi_n=1$ we have $\pi_0 = 0$, the Markov chain is null recurrent.
+
+When $ p<\frac{3-\sqrt{5}}{2},\frac{p(2-p)}{1-p}<1$,
+
+\begin{equation}
+    \pi_{2n+2} = \left[\frac{p(2-p)}{1-p}\right]^n \pi_{2}
+\end{equation}
+
+\begin{equation}
+    \sum_{n=0}^{\infty} \pi_{n} = (1-p) \pi_2 + (2-p) \pi_2 \sum_{n=0}^{\infty}\left[\frac{p(2-p)}{1-p}\right]^n = \frac{(1-p)^2(3-p)}{p^2-3p+1} \pi_2 = 1
+\end{equation}
+
+In summary,
+
+\begin{itemize}
+    \item When $p>\frac{3-\sqrt{5}}{2}$, the Markov chain is transient.
+    \item When $p=\frac{3-\sqrt{5}}{2}$, the Markov chain is null recurrent.
+    \item When $p<\frac{3-\sqrt{5}}{2}$, the Markov chain is positive recurrent. And the stationary distribution is, \begin{equation}
+        \left\{\begin{aligned}
+            &\pi_0 = \frac{p^2-3p+1}{(1-p)(3-p)} \\
+            &\pi_{2n} = \left[\frac{p(2-p)}{1-p}\right]^{n-1}  \frac{p^2-3p+1}{(1-p)^2(3-p)},n\geqslant 1 \\
+            & \pi_{2n-1} = \left[\frac{p(2-p)}{1-p}\right]^{n-1}  \frac{p^2-3p+1}{(1-p)(3-p)},n\geqslant 1
+        \end{aligned}
+            \right.
+    \end{equation}
+\end{itemize}
 % Denote $S_k = \sum_{i=0}^k Y_i$ and $S_0 = 0$
 
 % \begin{equation}
