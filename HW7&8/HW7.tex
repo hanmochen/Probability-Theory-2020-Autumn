@@ -22,6 +22,7 @@
 \DeclareMathOperator{\E}{\mathbb{E}}
 \DeclareMathOperator{\Var}{\operatorname{Var}}
 \DeclareMathOperator{\Cov}{\operatorname{Cov}}
+\DeclareMathOperator{\bP}{\mathbb{P}}
 \newcommand{\vu}{\boldsymbol{u}}
 %%%%%%%%%%%%%%%%%
 %     Title     %
@@ -343,6 +344,290 @@ In summary,
             \right.
     \end{equation}
 \end{itemize}
+
+
+\section{Problem 6}
+
+\subsection{(i)}
+
+Define $M_n = \max(|X_n|,|Y_n|),m_n = \min(|X_n|,|Y_n|)$, we can sort $(X_n,Y_n)$ into different states by $(M_n,m_n)$,
+
+\begin{itemize}
+    \item $S_0 = \{M_n = m_n = 0\} = \{(0,0)\}$
+    \item $S_1 = \{m_n = 0,M_n = 1\} = \{(0,1),(1,0),(0,-1),(-1,0)\}$
+    \item $S_2 = \{m_n = 0,M_n = 2\} = \{(0,2),(2,0),(0,-2),(-2,0)\}$
+    \item $S_3 = \{m_n = 1,M_n = 1\} = \{(1,1),(1,-1),(-1,1),(-1,-1)\}$
+    \item $S_4 = \{m_n = 1,M_n = 2\} = \{(2,1),(1,2),(2,-1),(-1,2),(-2,1),(-1,2),(-2,-1),(-1,-2)\}$
+    \item $S_5 = \{m_n = 2,M_n=2 \} = \{(2,-2),(-2,2),(2,2),(-2,-2)\}$ 
+    \item $S_6 = \{M_n= 3\}$
+\end{itemize}
+
+And we have an absorbing markov chain as follow.
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fsm.png}
+\end{figure}  
+
+And the corresponding transition matrix is 
+
+\begin{equation}
+    P = \begin{bmatrix}
+         0& 1 & 0 & 0 & 0 & 0 & 0 \\
+         \frac{1}{4} & 0 & \frac{1}{4}  & \frac{1}{2} & 0 & 0 & 0 \\
+         0 & \frac{1}{4} & 0 &0 & \frac{1}{2} & 0 & \frac{1}{4} \\
+         0 & \frac{1}{2} & 0 & 0 & \frac{1}{2} & 0 & 0 \\
+         0 & 0 & \frac{1}{4} & \frac{1}{4} & 0 & \frac{1}{4} & \frac{1}{4} \\
+         0 & 0&0&0  &\frac{1}{2} & 0 & \frac{1}{2} \\
+         0&0&0&0&0&0&1 
+    \end{bmatrix} = \begin{bmatrix}
+        \boldsymbol{Q} &  \boldsymbol{R} \\
+        \boldsymbol{0} & 1
+    \end{bmatrix}
+\end{equation}
+
+So the expectation of absorbing time is,
+
+\begin{equation}
+    (\boldsymbol{I}-\boldsymbol{Q})^{-1}\cdot \boldsymbol{1} = (\frac{135}{13},\frac{122}{13},\frac{80}{13},\frac{17}{2},\frac{73}{13},\frac{99}{26})
+\end{equation}
+
+$\E[T] = \frac{135}{13}$.
+
+To find $\bP(X_T = 3,Y_T=0)$, first notice that $\bP(X_T=3,Y_T=0) = \bP(X_T=0,Y_T=3) = \bP(X_T=-3,Y_T=0) =\bP(X_T=0,Y_T=-3) = \frac{1}{4} \bP(M_T=3,m_T=0)$. Then we can divide $S_6= \{M_n= 3\}$ into $3$ states which are also absorbing,
+
+\begin{itemize}
+    \item $S_6^{(0)}= \{M_n= 3,m_n=0\}$
+    \item $S_6^{(1)}= \{M_n= 3,m_n=1\}$
+    \item $S_6^{(2)}= \{M_n= 3,m_n=2\}$
+\end{itemize}
+
+Thus the corresponding matrix $\boldsymbol{R}$ is,
+
+\begin{equation}
+    \begin{bmatrix}
+        0&0&0\\
+        0&0&0\\
+        \frac{1}{4} & 0 &0 \\
+        0&0&0\\
+        0&\frac{1}{4}&0 \\
+        0 & 0 & \frac{1}{2}
+    \end{bmatrix}
+\end{equation}
+
+The absorbing probability is, 
+
+\begin{equation}
+    (\boldsymbol{I}-\boldsymbol{Q})^{-1}\cdot \boldsymbol{R} = \begin{bmatrix}
+        \frac{4}{13}&\frac{6}{13}&\frac{3}{13}\\
+        \frac{4}{13}&\frac{6}{13}&\frac{3}{13}\\
+        \frac{11}{26}&\frac{5}{13}&\frac{5}{26} \\
+        \frac{1}{4}&\frac{1}{2}&\frac{1}{4}\\
+        \frac{5}{26}&\frac{7}{13}&\frac{7}{26}\\
+        \frac{5}{52}&\frac{7}{26}&\frac{33}{52}
+    \end{bmatrix}
+\end{equation}
+
+So $\bP(X_T=3,Y_T=0) = \frac{1}{4} \times \frac{4}{13} = \frac{1}{13}$
+
+
+\subsection{(ii)}
+
+Using the same method in (i), define the states as follow, 
+
+\begin{itemize}
+    \item $S_0 = \{|X_n|+|Y_n| = 0\}$
+    \item $S_1 = \{|X_n|+|Y_n| = 1\}$
+    \item $S_2 = \{|X_n|+|Y_n| = 2, \big| |X_n|-|Y_n|\big|=2\}$
+    \item $S_3= \{|X_n|+|Y_n| = 2, \big| |X_n|-|Y_n|\big|=0\}$
+    \item $S_4 = \{|X_n|+|Y_n| = 3\}$
+\end{itemize}
+
+And we have an absorbing markov chain as follow.
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fsm-2.png}
+\end{figure}  
+
+We define the expectation of steps from $S_i$ to reach $S_3$ as $f_i,i=0,1,2$.
+
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            &f_0 = f_1 +1 \\
+            &f_1 = 0.25f_0+0.25 f_2+0.5f_3+ 1 \\ 
+            &f_2 = 0.25 f_1 + 1 \\
+            & f_3 = 0.5f_1+1
+        \end{aligned}
+    \right.
+\end{equation}
+
+Solving the equation we have $\E[T] = f_0 = \frac{39}{7}$. (It is equivalent to $(\boldsymbol{I}-\boldsymbol{Q})^{-1}\cdot \boldsymbol{1}$.)
+
+Also we can split $S_4$ into two sub states,
+\begin{itemize}
+    \item $S_4^{(0)} = \{|X_n|+|Y_n| = 3, \big| |X_n|-|Y_n|\big|=3\}$
+    \item $S_4^{(1)} = \{|X_n|+|Y_n| = 3, \big| |X_n|-|Y_n|\big|=1 \}$
+\end{itemize}
+
+And the corresponding matrix $\boldsymbol{R}$ is
+
+\begin{equation}
+    \begin{bmatrix}
+        0 & 0 \\
+        0 & 0\\
+        0.25 & 0.5 \\
+        0 & 0.5 \\
+    \end{bmatrix}
+\end{equation}
+
+The absorbing probability is, 
+
+\begin{equation}
+    (\boldsymbol{I}-\boldsymbol{Q})^{-1}\cdot \boldsymbol{R} = \begin{bmatrix}
+        \frac{1}{7} & \frac{6}{7} \\
+        \frac{1}{7} & \frac{6}{7} \\
+        \frac{2}{7} & \frac{5}{7} \\
+        \frac{1}{14} & \frac{13}{14} 
+    \end{bmatrix}
+\end{equation}
+
+So $P(X_T=3,Y_T=0) = \frac{1}{4} P(|X_T|+|Y_T| = 3, \big| |X_T|-|Y_T|\big|=3) = \frac{1}{28}$.
+
+
+\subsection{(iii)}
+% First we limit the area of random walk within $-2\leqslant X \leqslant 2N+2, -2\leqslant Y \leqslant 2 $.
+Define the expectation steps from $(X_n = x,Y_n= y)$ to first arrive at the boundary as $f(x,y)$.
+
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            &f(-2,y) = f(x,2) = f(x,-2) = 0\\
+            &f(x,y) = \frac{1}{4}[f(x-1,y)+f(x+1,y)+f(x,y-1)+f(x,y+1)] +1 
+        \end{aligned}
+    \right.
+\end{equation}
+
+According to symmetry we have $f(x,-1) = f(x,1)$.
+
+
+Define $g_i=f(i,0),h_i = f(i,-1)= f(i,1)$. We have
+
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            &g_{-2} = h_{-2} = 0 \\
+            & g_{i} = 0.5 h_{i} + 0.25 g_{i-1} + 0.25 g_{i+1} + 1 \\
+            & h_{i} =  0.25 h_{i-1}+0.25 h_{i+1} + 0.25 g_{i} + 1 % & g_{n} = 0.5 h_{n} + 0.p5 g_{n-1} +1 \\ % & h_{n} = 0.25 g_{n} + 0.5 h_{n-1}+1
+        \end{aligned}
+    \right.
+\end{equation}
+
+Because $\lim\limits_{n\to \infty} g_{n+1}-g_{n} = 0$, we have $\lim\limits_{n\to \infty} g_{n} = 8, \lim\limits_{n\to \infty} h_n = 6$. Denote $\alpha_i = g_i - 8,\beta_i = h_i - 6$. 
+
+\begin{equation}
+    \alpha_i + \sqrt{2}\beta_i = \frac{4+\sqrt{2}}{14} (\alpha_{i-1} + \sqrt{2}\beta_{i-1}) + \frac{4+\sqrt{2}}{14} (\alpha_{i+1} + \sqrt{2}\beta_{i+1})
+\end{equation}
+
+\begin{equation}
+    \alpha_i -\sqrt{2}\beta_i = \frac{4-\sqrt{2}}{14} (\alpha_{i-1} - \sqrt{2}\beta_{i-1}) + \frac{4-\sqrt{2}}{14} (\alpha_{i+1} -\sqrt{2}\beta_{i+1})
+\end{equation}
+
+We have 
+
+\begin{equation}
+    \begin{aligned}
+        \alpha_n + \sqrt{2} \beta_i = A_1 \lambda_1 ^n + A_2 \lambda_2^n  \\
+        \alpha_n - \sqrt{2} \beta_i = B_1 \mu_1 ^n + A_2 \mu_2^n 
+    \end{aligned}
+\end{equation}
+
+where $\lambda_{1,2} = \frac{1}{2} (4-\sqrt{2}\pm \sqrt{14-8\sqrt{2}} ),\mu_{1,2} = \frac{1}{2} (4+\sqrt{2}\pm \sqrt{14+8\sqrt{2}} )$. Because $\lim\_{n\to \infty} \alpha_n = \lim_{n\to \infty}\beta_n = 0 $, we have $A_1 = B_1 = 0$, thus 
+
+\begin{equation}
+    \begin{aligned}
+        \alpha_{n}  = \frac{1}{2} \left( A \lambda^n + B \mu^n \right) \\
+        \beta_{n}  = \frac{1}{2\sqrt{2}} \left( A \lambda^n - B \mu^n \right)
+    \end{aligned}
+\end{equation}
+
+where $\lambda = \frac{1}{2} (4-\sqrt{2}- \sqrt{14-8\sqrt{2}} ),\mu = \frac{1}{2} (4+\sqrt{2}-\sqrt{14+8\sqrt{2}} ).$
+
+And $\alpha_{-2} = g_{-2} - 8 = -8,\beta_{-2} = h_{-2}-6 =  - 6 $, we have $A = -\lambda^2 (8+6\sqrt{2}),B =\mu^2(6\sqrt{2}-8)$.
+
+\begin{equation}
+    g_0 = \alpha_0 + 8 = \frac{1}{2}(A+B) + 8 = 3\sqrt{2} (\mu^2 - \lambda^2) - 4(\mu^2 + \lambda^2) + 8 =10 \sqrt{7+\sqrt{17}}-8 \sqrt{14-2 \sqrt{17}}-8 = 6.1617
+\end{equation}
+
+To solve $P(X_T=0,Y_T=0)$, similarly we need to find $ (\boldsymbol{I}-\boldsymbol{Q})^{-1}\cdot \boldsymbol{R}$. However, since the Markov chain is infinite, we can define $p(x,y)$ as $P(X_T=0,Y_T=0|X_0=x,Y_0 = y)$ and solve the following equation,
+
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            &p(-2,0) = 1 \\
+            &p(-2,-1) = p(-2,1) = p(x,2) = p(x,-2) = 0 \\
+            &p(x,y) = \frac{1}{4}[p(x-1,y)+p(x+1,y)+p(x,y-1)+p(x,y+1)]
+        \end{aligned}
+    \right.
+\end{equation}
+
+Follows the same step, we have $P(X_T = -2,Y_T=0) = p(0,0) = \frac{1}{2} (\lambda^2 + \mu^2) = 16 - \sqrt{2 (95+7\sqrt{17})} = 0.1304$.
+
+
+\subsection{(iv)}
+
+\section{Problem 7}
+
+\subsection{(i)}
+
+First, for a random variable $X,\E[X]=0$ and there exists some constant $\alpha$, such that $\E[e^{tx}] \leqslant e^{\alpha^2 t^2/2}$, then $X$ is sub-Gaussian, and we have that 
+
+\begin{equation}
+    \bP(X \geqslant \lambda )  =  P(e^{tX} \geqslant e^{t\lambda} ) \leqslant \frac{E[e^{tX}]}{e^{t\lambda}} \leqslant e^{\alpha^2t^2/2 - t\lambda}
+\end{equation}
+
+Let $t= \frac{\lambda}{\alpha}$, we have
+
+\begin{equation}
+    \bP(X \geqslant \lambda ) \leqslant e^{-\frac{\lambda^2}{2\alpha^2}}
+\end{equation}
+
+\begin{equation}
+    \bP(|X| \geqslant \lambda ) \leqslant 2e^{-\frac{\lambda^2}{2\alpha^2}}
+\end{equation}
+
+For $X_i$, we have $\E[\exp(tX_i)]  =\frac{1}{2} (e^t + e^{-t})\leqslant \exp(t^2/2)$.
+When $\sum\limits_{i=1}^{\infty} a_i^2 = S < \infty$,
+
+\begin{equation}
+    \E[\exp(\sum_{i=1}^{\infty} a_iX_it) ] = \prod_{i=1}^{\infty} \E[\exp(ta_iX_i)] \leqslant  \prod_{i=1}^{\infty} \exp(t^2a_i^2)= e^{St^2}
+\end{equation}
+
+Denote $X= \sum_{i=1}^{\infty} a_iX_i$, 
+
+
+\begin{equation}
+    \bP(|X| \geqslant \lambda)  \leqslant 2e^{-\frac{\lambda^2}{S}}
+\end{equation}
+
+Thus we have $X$ converges almost surely, i.e $\bP(|X| \leqslant \infty) = \bP(|\sum_{i=1}^{\infty} a_iX_i| < \infty) = 1$.
+
+\subsection{(ii)}
+
+By the corollary of Kolmogorov three-series theorem, given independent variables $X_1,X_2,\cdots,X_n$,
+
+\begin{equation}
+    \bP\left(\sum_{k=1}^{\infty} X_{k} \text { converges }\right)=0 \text { or } 1
+\end{equation}
+
+And because $\E[(\sum_{i=1}^{\infty} a_iX_i)^2] = \sum_{i=1}^{\infty} a_i^2 = \infty$, $\bP(|\sum_{i=1}^{\infty} a_iX_i| = \infty) >0$, thus 
+
+\begin{equation}
+    \bP\left(\big|\sum_{i=1}^{\infty} a_iX_i \big| < \infty\right) = 0
+\end{equation}
+
+
+
+% Denote $S_k = \s
 % Denote $S_k = \sum_{i=0}^k Y_i$ and $S_0 = 0$
 
 % \begin{equation}
@@ -353,7 +638,7 @@ In summary,
 
 % \begin{equation}
 %     \begin{aligned}
-%         f(n) & = \sum_{k=0}^{n} P(S_k = n) = \sum_{k=1}^{n} \sum_{j=0}^{n-1} P(S_{k-1} = j,Y_k = n-j) \\
+%         f(n) & = \sum_{k=0}^{n} åP(S_k = n) = \sum_{k=1}^{n} \sum_{j=0}^{n-1} P(S_{k-1} = j,Y_k = n-j) \\
 %         & = \sum_{j=0}^{n-1} p_{n-j}\sum_{k=1}^{n}  P(S_{k-1} = j) = \sum_{j=0}^{n-1} p_{n-j} f(j)
 %     \end{aligned}
 % \end{equation}
