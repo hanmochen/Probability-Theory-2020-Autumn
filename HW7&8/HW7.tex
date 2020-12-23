@@ -626,6 +626,67 @@ And because $\E[(\sum_{i=1}^{\infty} a_iX_i)^2] = \sum_{i=1}^{\infty} a_i^2 = \i
 \end{equation}
 
 
+\section{Problem 8}
+
+\subsection{(i)}
+
+It is easy to see that $Y_n = (X_{n-1},X_n)$ is a Markov Chain. And $Y_1 = (0,1)$. Thus $Y_2 = (1,1)$. And the state transition graph is as follow.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.4\linewidth]{State.jpg}
+\end{figure}
+
+So if $X_n$ reaches 0 before 3, the path is consisted of three parts,
+
+\begin{itemize}
+    \item $(0,1)\to (1,1)$
+    \item $m$ (can be zero) circles of $(1,1) \to (2,1) \to (1,2) \to (1,1)$ 
+    \item $(1,1)\to (1,0)$
+\end{itemize}
+
+So 
+
+\begin{equation}
+    \bP(X_n \text{ reaches } 0 \text{ before } 3) = \sum_{m=0}^{\infty} \frac{1}{2} (\frac{1}{8})^m = \frac{4}{7}
+\end{equation}
+
+Thus
+
+\begin{equation}
+    \bP(X_n \text{ reaches } 3 \text{ before } 0) = 1-\frac{4}{7} = \frac{3}{7}
+\end{equation}
+
+\subsection{(ii)}
+
+$Y_1 = (1,2)$. Denote $p$ as the hitting probability of $(1,1)$ from $(1,2)$ and $q$ as the hitting probability of $(1,1)$ from $(2,1)$. Consider the Markov chain starting from $(1,2)$ and $(2,1)$, it can be expressed as a binary tree with recursive structure.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.4\linewidth]{s.jpg}
+\end{figure}
+
+So we have
+
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            &p = \frac{1}{2} q + \frac{1}{2} p^2 \\
+            &q = \frac{1}{2} + \frac{1}{2} pq
+        \end{aligned}
+    \right.
+\end{equation}
+
+We have $p(2-p)^2 = 1$. Because $p\leqslant 1$ we have $p = 1$ or $\frac{3-\sqrt{5}}{2}$. 
+
+Notice that 
+
+\begin{equation}
+    \bP\left(\exists n ,Y_n = (1,1) | Y_0 = (1,2)\right) = \bP\left(Y_n = (1,1) | Y_{n-1} = (2,1)\right)\bP\left(\exists n ,Y_{n-1} = (2,1) | Y_0 = (1,2)\right) \leqslant \frac{1}{2}
+\end{equation}
+
+So $p = \frac{3-\sqrt{5}}{2}$.
+
 
 % Denote $S_k = \s
 % Denote $S_k = \sum_{i=0}^k Y_i$ and $S_0 = 0$

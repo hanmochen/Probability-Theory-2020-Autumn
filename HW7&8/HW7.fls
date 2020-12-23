@@ -157,5 +157,7 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy
 OUTPUT HW7.xdv
 INPUT fsm.png
 INPUT fsm-2.png
+INPUT State.jpg
+INPUT s.jpg
 INPUT HW7.aux
 INPUT ./HW7.out
