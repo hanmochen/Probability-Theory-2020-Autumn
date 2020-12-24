@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.3.23)  23 DEC 2020 16:51
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.3.23)  24 DEC 2020 02:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -389,15 +389,15 @@ File: State.jpg Graphic file (type bmp)
  [11]
 File: s.jpg Graphic file (type bmp)
 <s.jpg>
- [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 726.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 726.
+ [12] [13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 781.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 781.
  (./HW7.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 726.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 726.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 781.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 781.
 Package rerunfilecheck Info: File `HW7.out' has not changed.
-(rerunfilecheck)             Checksum: 90FA8121A46D74C6216710477FE68D74.
+(rerunfilecheck)             Checksum: E0CC0899C75D3CA95D827DE28A03212D.
  ) 
 Here is how much of TeX's memory you used:
  10848 strings out of 492933
@@ -408,4 +408,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  37i,12n,45p,811b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on HW7.xdv (13 pages, 108800 bytes).
+Output written on HW7.xdv (14 pages, 116800 bytes).

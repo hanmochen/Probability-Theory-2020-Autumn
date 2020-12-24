@@ -155,7 +155,7 @@ So the necessary and sufﬁcient condition for $\lim\limits_{n\to\infty} f(n)$ t
 
 \subsection{(iii)}
 
-The limis equals to the steady-state probability, 
+The limits equals to the steady-state probability, 
 
 \begin{equation}
     \pi_0 = \lim_{n\to\infty} f(n) = \frac{1}{\E[T_0]} = \frac{1}{\mu}
@@ -687,6 +687,61 @@ Notice that
 
 So $p = \frac{3-\sqrt{5}}{2}$.
 
+\section{Problem 9}
+
+$\{X_n\}_{n\geqslant 0 }$ is a martingle because $\E[X_n|X_{n-1}] = X_{n-1}$. Also we have $0< X_n < 1$ by induction. Thus by Martingale Convergence Theorem, $X_n$ converges almost surely.
+
+Denote the limit random variable as $X_{\infty}$. First $E[X_{\infty}] = q$. Also
+
+\begin{equation}
+    \Var(X_n) = \sum_{i=1}^n \E[(X_{i}-X_{i-1})^2] = \sum_{i=1}^n \E[(X_{i-1}-X_{i-1}^2)^2]  
+\end{equation}
+
+Given $X_{i-1} = \lambda$, we have 
+
+\begin{equation}
+    \E[(X_{i}-X_{i}^2)^2] = \frac{1}{2} [(\lambda(2-\lambda)-\lambda^2(2-\lambda)^2)^2 +(\lambda^2-\lambda^4)^2] = \lambda^2 (1-\lambda)^2 (\lambda^2(\lambda-1)^2 - 6\lambda(1-\lambda) +2 )
+\end{equation}
+
+Because $\lambda^2(\lambda-1)^2 - 6\lambda(1-\lambda) +2 \geqslant (\lambda^2 - \lambda+1)^2$, we have 
+
+\begin{equation}
+    \Var(X_n) \geqslant q(1-q) \big[1-(1-q+q^2)^n\big]
+\end{equation}
+
+And 
+
+\begin{equation}
+    \lim_{n\to \infty} \Var(X_n) \geqslant q(1-q)
+\end{equation}
+
+Also we have
+
+\begin{equation}
+    \Var(X_{\infty}) = \E[X^2] - (\E[X])^2  \leqslant \E[X] - (\E[X])^2 = q-q^2
+\end{equation}
+
+So the limit distribution is Bernoulli$(q)$.
+
+\section{Problem 10}
+
+For $n$-dimention sphere,
+
+\begin{equation}
+    V_{n}=\frac{\pi^{\frac{n}{2}} R^{n}}{\Gamma\left(\frac{n}{2}+1\right)}
+\end{equation}
+
+Denote $S=X_1^2+X_2^2+X_3^2$,
+
+\begin{equation}
+    \begin{aligned}
+        f(x_1,x_2,x_3) &= \lim_{n \to \infty} \frac{\pi^{\frac{n-3}{2}} (n-S)^{\frac{n-3}{2}}}{\Gamma\left(\frac{n-3}{2}+1\right)} \times \frac{1}{V_n} \\
+        & = \frac{1}{(2\pi)^{\frac{3}{2}}} e^{-\frac{S}{2}} = \frac{1}{(2\pi)^{\frac{3}{2}}} e^{-\frac{x_1^2+x_2^2+x_3^2}{2}}
+    \end{aligned}
+\end{equation}
+
+
+So $(X_1^{(n)},X_2^{(n)},X_3^{(n)})$ follows the standard Gaussian distribution as $n\to \infty$.
 
 % Denote $S_k = \s
 % Denote $S_k = \sum_{i=0}^k Y_i$ and $S_0 = 0$
